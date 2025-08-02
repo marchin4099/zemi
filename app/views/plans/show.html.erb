@@ -1,0 +1,8 @@
+<h1>ツイート詳細</h1>
+<div class="plan-show">
+  <% if @plan.image.attached? %>
+    <%= image_tag @plan.image, size: '300x300' %>
+  <% end %>
+  <h3><%= @plan.name %></h3>
+  <p><%= @plan.about %></p>
+</div>

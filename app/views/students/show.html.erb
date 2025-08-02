@@ -1,0 +1,8 @@
+<h1>ツイート詳細</h1>
+<div class="student-show">
+  <% if @student.image.attached? %>
+    <%= image_tag @student.image, size: '300x300' %>
+  <% end %>
+  <h3><%= @student.name %></h3>
+  <p><%= @student.about %></p>
+</div>

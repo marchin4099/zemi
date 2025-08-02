@@ -1,0 +1,23 @@
+<h1>(自分の題名)</h1>
+<h3>新規投稿ページ</h3>
+<%= form_for @plan do |f| %>
+
+  <div class="field">
+    <%= f.label :項目名 %>
+    <%= f.text_field :name, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :項目名  %>
+    <%= f.text_area :about, :size => "30x2" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+    </div>
+
+<%= f.submit "投稿する" %>
+<% end %>
+
+<%= link_to "一覧に戻る", plans_path %>

@@ -1,0 +1,32 @@
+<div class="teacher-top">
+  <%= image_tag "IMG_2030.jpeg", class: "top-image" %>
+  <div class="teacheroverlay-box">
+    <div class="contactoverlay-text">
+      <h1>お　問　い　合　わ　せ</h1>
+    </div>
+  </div>
+</div>
+
+<h1>(自分の題名)</h1>
+<h3>新規投稿ページ</h3>
+
+<%= form_for @contact do |f| %>
+  <div class="field">
+    <%= f.label :名前 %>
+    <%= f.text_field :name, size: 30 %>
+  </div>
+  <div class="field">
+    <%= f.label :メールアドレス %>
+    <%= f.text_field :mail, size: 30 %>
+  </div>
+  <div class="field">
+    <%= f.label :件名 %>
+    <%= f.text_field :title, size: 30 %>
+  </div>
+  <div class="field">
+    <%= f.label :内容 %>
+    <%= f.text_area :about, size: "30x2" %>
+  </div>
+  <%= f.submit "投稿する" %>
+<% end %>
+

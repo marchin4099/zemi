@@ -1,0 +1,29 @@
+<div class="teacher-top">
+  <%= image_tag "IMG_2030.jpeg", class: "top-image" %>
+  <div class="teacheroverlay-box">
+    <div class="activityoverlay-text">
+      <h1>活　動　ブ　ロ　グ</h1>
+    </div>
+  </div>
+</div>
+
+<% if user_signed_in? %>
+  
+<% end %>
+<div class="tweets-container">
+  <% @tweets.reverse_each do |t| %>
+    <%= link_to tweet_path(t.id), class: "tweet-link" do %> <!-- ここでリンクを囲む -->
+      <div class="tweet">
+        <% if t.image.attached? %>
+            <%= image_tag t.image, size: '250x200' %>
+        <% end %>
+        <h3><%= t.name %></h3>
+        <%= t.day %>
+      <% if user_signed_in? && current_user.id == t.user_id %>
+        <%= link_to "編集する", edit_tweet_path(t.id) %>
+        <%= button_to "削除する", tweet_path(t.id), method: :delete %>
+      <% end %>
+      </div>
+    <% end %> <!-- link_to を閉じる -->
+  <% end %>
+</div>

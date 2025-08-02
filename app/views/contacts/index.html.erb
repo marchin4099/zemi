@@ -1,0 +1,15 @@
+
+
+<h1>お問い合わせ</h1>
+<h3>一覧ページ</h3>
+
+<div class="contscts-container">
+  <% @contacts.each do |t| %>
+    <div class="contact">
+      <%= t.name %>
+      <%= t.mail %>
+      <%= t.title %>
+      <%= t.about %>
+    </div>
+  <% end %>
+

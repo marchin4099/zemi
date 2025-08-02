@@ -1,0 +1,21 @@
+<h1>(自分の題名)</h1>
+<h3>新規投稿ページ</h3>
+<%= form_for @letter do |f| %>
+  <div class="field">
+    <%= f.label :日時 %>
+    <%= f.date_field :day, :size => 30 %>
+  </div>
+  <div class="field">
+    <%= f.label :項目名 %>
+    <%= f.text_field :name, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :項目名  %>
+    <%= f.text_area :about, :size => "30x2" %>
+  </div>
+
+<%= f.submit "投稿する" %>
+<% end %>
+
+<%= link_to "一覧に戻る", letters_path %>

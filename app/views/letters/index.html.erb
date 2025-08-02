@@ -1,0 +1,43 @@
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+</head>
+
+<div class="teacher-top">
+  <%= image_tag "IMG_2030.jpeg", class: "top-image" %>
+  <div class="teacheroverlay-box">
+    <div class="letteroverlay-text">
+      <h1>お　知　ら　せ</h1>
+    </div>
+  </div>
+</div>
+
+  <!-- 上部余白 -->
+  <div class="letters-top-box"></div>
+
+  <!-- 本文テーブル -->
+  <div class="letters-table">
+    <div class="section-lines">
+      <div class="line top-line"></div>
+      <div class="line middle-line"></div>
+      <div class="line-caption">お知らせ一覧</div>
+      <div class="line bottom-line"></div>
+    </div>
+
+    <% @letters.each do |t| %>
+  <%= link_to letter_path(t.id), class: "letter-row" do %>
+    <div class="letter-content">
+      <span class="letter-date"><%= t.day %></span>
+      <span class="letter-title"><%= t.name %></span>
+    </div>
+
+    <% if user_signed_in? && current_user.id == t.user_id %>
+      <div class="letter-actions">
+        <%= link_to "編集する", edit_letter_path(t.id), class: "edit-link" %>
+        <%= button_to "削除する", letter_path(t.id), method: :delete, class: "delete-button" %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+  <div class="letters-bottom"></div>
+</div>

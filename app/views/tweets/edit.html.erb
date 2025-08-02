@@ -1,0 +1,23 @@
+<%= form_for @tweet do |f| %>
+   <div class="field">
+    <%= f.label :タイトル %>
+    <%= f.text_field :name, :size => 30 %>
+    </div>
+    <div class="field">
+    <%= f.label :内容  %>
+    <%= f.text_area :about, :size => "30x2" %>
+    </div>
+    <div class="field">
+    <%= f.label :実施日  %>
+    <%= f.date_field :day, :size => "30x2"%>
+    </div>
+    <div class="field">
+    <%= f.label :場所 %>
+    <%= f.text_field :place, :size => 30 %>
+    </div>
+    <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+    </div>
+  <%= f.submit "編集する" %>
+<% end %>

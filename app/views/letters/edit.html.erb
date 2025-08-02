@@ -1,0 +1,15 @@
+<%= form_for @letter do |f| %>
+  <div class="field">
+    <%= f.label :日時 %>
+    <%= f.date_field :day, :size => 30 %>
+    </div>
+   <div class="field">
+    <%= f.label :名前 %>
+    <%= f.text_field :name, :size => 30 %>
+    </div>
+    <div class="field">
+    <%= f.label :項目名  %>
+    <%= f.text_area :about, :size => "30x2" %>
+    </div>
+  <%= f.submit "編集する" %>
+<% end %>

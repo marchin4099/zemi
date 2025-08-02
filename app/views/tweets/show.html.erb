@@ -1,0 +1,10 @@
+<h1>ツイート詳細</h1>
+<div class="tweet-show">
+  <% if @tweet.image.attached? %>
+    <%= image_tag @tweet.image, size: '300x300' %>
+  <% end %>
+  <h3><%= @tweet.name %></h3>
+  <p><%= @tweet.about %></p>
+  <p><%= @tweet.day %></p>
+  <p><%= @tweet.place %></p>
+</div>

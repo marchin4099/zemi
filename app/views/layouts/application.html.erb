@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Zemi</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <link href="https://fonts.googleapis.com/css2?family=Kavoon&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+
+  
+  <header>
+  <h1>早稲田大学教育学部　及川ゼミ</h1>
+  <div class="header-list">
+    <%= link_to 'Top', :controller => "tweets", :action => "top" %>
+    <div class="aboutus">
+      <a href="#" class="aboutus-link">About us</a>
+      <div class="links">
+        <%= link_to 'Overview', :controller => "tweets", :action => "outline" %>
+        <%= link_to 'Q&A', :controller => "tweets", :action => "question" %>
+      </div>
+    </div>
+    <div class="activities">
+      <a href="#" class="activities-link">Activities</a>
+      <div class="links">
+        <%= link_to 'Plans', controller: "plans", action: "index" %>
+        <%= link_to 'Blogs', controller: "tweets", action: "index" %>
+      </div>
+    </div>
+    <div class="members">
+      <a href="#" class="members-link">Members</a>
+      <div class="links">
+        <%= link_to 'Teacher', :controller => "tweets", :action => "teacher" %>
+        <%= link_to 'Students', :controller => "students", :action => "index" %>
+      </div>
+    </div>
+    <%= link_to 'News', :controller => "letters", :action => "index" %>
+    <%= link_to 'Contact', :controller => "contacts", :action => "new" %>
+  </div>
+ </header>
+ <main>
+    <%= yield %>
+ </main>
+ <footer>
+      <p>Copyright © Oikawa Seminar Rights Reserved.</p>
+    </footer>
+  </body>
+</html>

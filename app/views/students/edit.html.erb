@@ -1,0 +1,15 @@
+<%= form_for @student do |f| %>
+   <div class="field">
+    <%= f.label :名前 %>
+    <%= f.text_field :name, :size => 30 %>
+    </div>
+    <div class="field">
+    <%= f.label :項目名  %>
+    <%= f.text_area :about, :size => "30x2" %>
+    </div>
+    <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+    </div>
+  <%= f.submit "編集する" %>
+<% end %>

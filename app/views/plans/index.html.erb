@@ -1,0 +1,28 @@
+<div class="teacher-top">
+  <%= image_tag "IMG_2030.jpeg", class: "top-image" %>
+  <div class="teacheroverlay-box">
+    <div class="planoverlay-text">
+      <h1>年　間　予　定</h1>
+    </div>
+  </div>
+</div>
+
+
+<div class="plans-container">
+  <% @plans.reverse_each do |t| %>
+    <%= link_to plan_path(t.id), class: "plan-link" do %> <!-- ここでリンクを囲む -->
+      <div class="plan">
+      <h1><%= t.name %></h1>
+      <% if t.image.attached? %>
+          <%= image_tag t.image, size: '250x200'%>
+      <% end %>
+    <% if user_signed_in? && current_user.id == t.user_id %>
+      <%= link_to "編集する", edit_plan_path(t.id) %>
+      <%= button_to "削除する", plan_path(t.id), method: :delete %>
+    <% end %> 
+    </div>
+    <% end %> <!-- link_to を閉じる -->
+  <% end %>
+<div>
+
+

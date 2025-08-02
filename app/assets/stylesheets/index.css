@@ -1,0 +1,1148 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+header {
+  background-color: #003366;
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;  /* 必要に応じてパディングを追加 */
+  color: white;
+  font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+h1 {
+  margin: 0;
+}
+
+.header-list {
+  background-color: #003366;
+  display: flex;
+  justify-content: flex-end; /* 右寄せにする */
+  gap: 30px;  /* 各リンクの間にスペースを追加 */
+  color: white;  /* ヘッダーリストのリンク文字色を白に設定 */
+  text-decoration: none;  /* リンクの下線を削除 */
+    align-items: center;
+}
+
+.header-list a {
+    color: white;  /* ヘッダーリストのリンク文字色を白に設定 */
+  text-decoration: none;  /* リンクの下線を削除 */
+}
+
+footer{
+  background-color: #333;
+  color: white;
+}
+
+body {
+  background-color: #FFFAF0;
+}
+
+
+.activities {
+  position: relative;
+  display: inline-block;
+}
+
+.activities-link {
+  color: white; /* リンクの色 */
+  text-decoration: none;
+  font-size: 16px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.links {
+  display: none;
+  position: absolute;
+  top: 30px; /* 「Activities」リンクの下に表示 */
+  left: 0;
+  background-color: #003366;
+  
+  padding: 10px;
+  width: 90px;
+  z-index: 3;
+}
+
+.activities:hover .links {
+  display: block; /* activitiesリンクにホバーしたときに表示 */
+}
+
+.links a {
+  display: block;
+  padding: 5px;
+  text-decoration: none;
+  color: white;
+}
+
+.links a:hover {
+  background-color: #003366; /* リンクにホバーしたときの背景色 */
+  color:#00a2ff
+}
+
+.aboutus {
+  position: relative;
+  display: inline-block;
+}
+
+.aboutus-link {
+  color: white; /* リンクの色 */
+  text-decoration: none;
+  font-size: 16px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.aboutus:hover .links {
+  display: block; /* activitiesリンクにホバーしたときに表示 */
+}
+
+.members {
+  position: relative;
+  display: inline-block;
+}
+
+.members-link {
+  color: white; /* リンクの色 */
+  text-decoration: none;
+  font-size: 16px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.members:hover .links {
+  display: block; /* activitiesリンクにホバーしたときに表示 */
+}
+
+
+
+.header-list a:hover {
+  color: #00a2ff; /* ホバー時に文字色を変更（青色） */
+}
+
+.header-list a {
+  font-family: 'Kavoon', sans-serif; /* リンクのフォントを Kavoon に変更 */
+}
+
+.tweets-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 100px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+
+
+
+.tweet {
+  width: 300px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  border: 2px solid #ccc;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.tweet h3 {
+  font-size: 18px; /* 投稿名の文字サイズ */
+  margin: 0; /* 余計なマージンを削除 */
+}
+
+.tweet img {
+   width: 90%;
+  height: 60%;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;         /* インライン要素からブロックに変換 */
+  margin: 0 auto;    
+  border: 1px solid #ccc;
+  margin-top: 10px;
+}
+
+.tweet p {
+  margin: 10px 0 0 0; /* 文章に間隔を付ける */
+  overflow: hidden; /* 文章が長すぎる場合に省略 */
+  text-overflow: ellipsis; /* 省略時に...を表示 */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.tweet-link {
+  text-decoration: none;
+  color: inherit; /* テキスト色を継承 */
+  display: block;  /* 全体をブロックリンク化 */  
+}
+
+.tweet-link:hover .tweet {
+  opacity: 0.8; /* ホバー時に視覚的な変化を付ける例 */
+}
+
+
+.letters-table {
+  position: relative;
+  padding-top: 300px;               /* 上部余白 */
+  padding-left: 120px;             /* 穴用のスペース */
+  padding-right: 120px;  
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 300px;
+  background-color: #fefefe;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  height: 1440px;   /* 投稿20件分 */
+  box-sizing: border-box;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* ✅ 横線（罫線）：中央80%にだけ描画 */
+.letters-table::after {
+  content: '';
+  position: absolute;
+  top: 300px; /* 罫線スタート位置 */
+  left: 10%;
+  width: 80%;
+  height: 100%;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 71px,
+    #e0e0e0 72px
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ✅ 穴（バインダー穴） */
+.letters-table::before {
+  content: '';
+  position: absolute;
+  top: 96px;
+  left: 50px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #FFFAF0;
+  box-shadow:
+    /* ✅ 穴の中身部分（薄ベージュ） */
+    0     72px  0 0 #FFFAF0,
+    0    144px  0 0 #FFFAF0,
+    0    216px  0 0 #FFFAF0,
+    0    288px  0 0 #FFFAF0,
+    0    360px  0 0 #FFFAF0,
+    0    432px  0 0 #FFFAF0,
+    0    504px  0 0 #FFFAF0,
+    0    576px  0 0 #FFFAF0,
+    0    648px  0 0 #FFFAF0,
+    0    720px  0 0 #FFFAF0,
+    0    792px  0 0 #FFFAF0,
+    0    864px  0 0 #FFFAF0,
+    0    936px  0 0 #FFFAF0,
+    0   1008px  0 0 #FFFAF0,
+    0   1080px  0 0 #FFFAF0,
+    0   1152px  0 0 #FFFAF0,
+    0   1224px  0 0 #FFFAF0,
+
+    /* ✅ 枠線部分（灰色） */
+    0     0     0 2px #aaa,
+    0     72px  0 2px #aaa,
+    0    144px  0 2px #aaa,
+    0    216px  0 2px #aaa,
+    0    288px  0 2px #aaa,
+    0    360px  0 2px #aaa,
+    0    432px  0 2px #aaa,
+    0    504px  0 2px #aaa,
+    0    576px  0 2px #aaa,
+    0    648px  0 2px #aaa,
+    0    720px  0 2px #aaa,
+    0    792px  0 2px #aaa,
+    0    864px  0 2px #aaa,
+    0    936px  0 2px #aaa,
+    0   1008px  0 2px #aaa,
+    0   1080px  0 2px #aaa,
+    0   1152px  0 2px #aaa,
+    0   1224px  0 2px #aaa;
+  z-index: 2;
+}
+
+/* ✅ 投稿ごとの行スタイル */
+.letter-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  height: 72px;
+  text-decoration: none;
+  color: inherit;
+  background-color: transparent;
+  transition: background-color 0.2s;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 3; /* 背景線より上に表示 */
+}
+
+
+
+.letter-row:hover {
+  background-color: #f5f5f5;
+}
+
+
+.letter-row:hover {
+  background-color: #f5f5f5;
+}
+
+/* ✅ 投稿のテキスト部分 */
+.letter-date {
+  font-size: 2em;
+  color: #333;
+}
+
+.letter-title {
+  font-weight: bold;
+  font-size: 2em;
+  color: #333;
+}
+
+/* ✅ 300px上部の装飾ライン（任意） */
+.section-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 300px;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.line {
+  height: 3px;
+  background-color: #999;
+  position: absolute;
+}
+
+.top-line {
+  top: 100px;
+  width: 30%;
+  right: 10%;
+}
+
+.middle-line {
+  top: 200px;
+  width: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bottom-line {
+  top: 300px;
+  width: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+
+
+.letter-date {
+  font-size: 2em;
+  color: #333;
+}
+
+.letter-title {
+  font-weight: bold;
+  font-size: 2em;
+  color: #333;
+}
+
+.students-container {
+ display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 100px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.student {
+  width: 300px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  border: 2px solid #ccc;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.student h3 {
+  font-size: 18px; /* 投稿名の文字サイズ */
+  margin: 0; /* 余計なマージンを削除 */
+}
+
+.student img {
+   width: 90%;
+  height: 60%;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;         /* インライン要素からブロックに変換 */
+  margin: 0 auto;    
+  border: 1px solid #ccc;
+  margin-top: 10px;
+}
+
+.student p {
+  margin: 10px 0 0 0; /* 文章に間隔を付ける */
+  overflow: hidden; /* 文章が長すぎる場合に省略 */
+  text-overflow: ellipsis; /* 省略時に...を表示 */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.student-link {
+  text-decoration: none;
+  color: inherit; /* テキスト色を継承 */
+  display: block;  /* 全体をブロックリンク化 */
+}
+
+.student-link:hover .student {
+  opacity: 0.8; /* ホバー時に視覚的な変化を付ける例 */
+}
+
+.plans-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  row-gap: 60px;  /* 上下の間隔 */
+}
+
+.plan {
+  width: 900px;
+  height: 350px;
+  display: flex;                   /* 横並びにする */
+  justify-content: space-between; /* 文字と画像を両端に配置 */
+  align-items: center;            /* 縦方向：中央揃え */
+  padding: 20px;
+  border: 2px solid #ccc;
+  background-color: white;
+  border-radius: 20px;
+  gap: 30px; /* 文字と画像の間に余白をつけたい場合 */
+}
+
+.plan img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.plan-link {
+  text-decoration: none;  /* ← 下線を消す */
+  color: inherit;         /* ← 文字色も親に合わせる（必要なら） */
+}
+
+.plan h1 {
+  margin-left: 20px; /* ← お好みで調整（例：10px〜30px） */
+}
+
+
+.letters-bottom{
+  width: 100vw;         /* 画面の横幅いっぱいに表示 */
+  height: 600px;
+}
+
+.letters-top-box {
+  width: 100vw;        /* 画面横幅いっぱい */
+  height: 300px;       /* 好きな高さ（例：下と同じ600px） */
+}
+
+
+.top-wrapper {
+  position: relative;
+  width: 100%;
+  height: 600px; /* 画像と同じ高さに固定 */
+  overflow: hidden;
+}
+
+.top-image {
+  width: 100%;        /* 横幅いっぱい */
+  height: 600px;      /* 固定高さ */
+  object-fit: cover;  /* はみ出す部分をトリミング */
+  display: block;
+  margin: 0;
+  position: relative;
+  z-index: -1;
+}
+
+.overlay-box {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* 半透明の黒塗り */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.overlay-text {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-family: sans-serif;
+  line-height: 1.6;
+}
+
+.overlay-text .line3 {
+  font-size: 3em;
+  font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+.overlay-text .line1,
+.overlay-text .line2 {
+  font-size: 1.5em;
+  font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+.letters-toptable {
+  position: relative;
+  padding-top: 150px;               /* 上部余白 */
+  padding-left: 80px;             /* 穴用のスペース */
+  padding-right: 80px;  
+  width: 50%;
+  margin: 0 auto;
+  background-color: #fefefe;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  min-height: calc(72px * 6);     /* 投稿5件分 */
+  box-sizing: border-box;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* ✅ 横線（罫線）：中央80%にだけ描画 */
+.letters-toptable::after {
+  content: '';
+  position: absolute;
+  top: 150px; /* 罫線スタート位置 */
+  left: 10%;
+  width: 80%;
+  height: 100%;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 71px,
+    #e0e0e0 72px
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ✅ 穴（バインダー穴） */
+.letters-toptable::before {
+  content: '';
+  position: absolute;
+  top: 50px;
+  left: 30px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #FFFAF0;
+  box-shadow:
+    /* ✅ 穴の中身部分（薄ベージュ） */
+    0     60px  0 0 #FFFAF0,
+    0    120px  0 0 #FFFAF0,
+    0    180px  0 0 #FFFAF0,
+    0    240px  0 0 #FFFAF0,
+    0    300px  0 0 #FFFAF0,
+
+
+    /* ✅ 枠線部分（灰色） */
+    0     0     0 2px #aaa,
+    0     60px  0 2px #aaa,
+    0    120px  0 2px #aaa,
+    0    180px  0 2px #aaa,
+    0    240px  0 2px #aaa,
+    0    300px  0 2px #aaa;
+  z-index: 2;
+}
+
+/* ✅ 投稿ごとの行スタイル */
+.letter-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  height: 72px;
+  text-decoration: none;
+  color: inherit;
+  background-color: transparent;
+  transition: background-color 0.2s;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 3; /* 背景線より上に表示 */
+}
+
+
+
+.letter-link:hover {
+  background-color: #f5f5f5;
+}
+
+
+
+/* ✅ 投稿のテキスト部分 */
+.letter-date {
+  font-size: 2em;
+  color: #333;
+}
+
+.letter-title {
+  font-weight: bold;
+  font-size: 2em;
+  color: #333;
+}
+
+/* ✅ 300px上部の装飾ライン（任意） */
+.section-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 300px;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.line {
+  height: 3px;
+  background-color: #999;
+  position: absolute;
+}
+
+.top-line {
+  top: 100px;
+  width: 30%;
+  right: 10%;
+}
+
+.middle-line {
+  top: 200px;
+  width: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bottom-line {
+  top: 300px;
+  width: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.line-caption {
+  position: absolute;
+  top: 215px;                    /* ← middle と bottom の中間 */
+  left: 30%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-weight: bold;
+  font-size: 3em;
+  color: #333;
+  z-index: 5;                    /* 線より前に出す */
+  padding: 0 10px;
+  font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+
+
+.letter-date {
+  font-size: 2em;
+  color: #333;
+}
+
+.letter-title {
+  font-weight: bold;
+  font-size: 2em;
+  color: #333;
+}
+
+
+
+.section-toplines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 300px;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.topline {
+  height: 3px;
+  background-color: #999;
+  position: absolute;
+}
+
+.mark-line {
+  top: 150px;
+  width: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.section-toplines h1 {
+  text-align: center;      /* 中央寄せ */
+  margin-top: 100px;       /* 上からの距離。必要に応じて調整 */
+  font-size: 2rem;         /* 任意：サイズ調整 */
+  color: #333;             /* 任意：文字色 */
+  z-index: 5;              /* 任意：mark-lineより前面にしたいとき */
+  position: relative;      /* z-index有効化用 */
+}
+
+
+.topletter-image {
+  width: 30%;
+  height: 180px;
+  position: absolute;     /* ← 絶対配置に変更 */
+  top: 0;
+  right: 0;
+  z-index: 3;
+}
+
+.sticky-note h1{
+  text-align: center;      /* 中央寄せ */
+  margin-top: 50px; 
+  margin-bottom: 50px;      /* 上からの距離。必要に応じて調整 */
+  font-size: 3rem;         /* 任意：サイズ調整 */
+  color: #333;             /* 任意：文字色 */
+  z-index: 5;              /* 任意：mark-lineより前面にしたいとき */
+  position: relative;      /* z-index有効化用 */
+  font-family: 'Kavoon', sans-serif; 
+}
+
+.toptweets{
+  background-color: #F5DEB3;
+  margin-top: 50px;
+  padding-top: 15px;  /* ←ここで上余白を追加 */
+  padding-bottom: 50px;  /* ←ここで上余白を追加 */
+}
+.tweets-note h1{
+  text-align: center;      /* 中央寄せ */
+  margin-top: 50px; 
+  margin-bottom: 50px;
+  font-size: 3rem;         /* 任意：サイズ調整 */
+  color: #333;             /* 任意：文字色 */
+  z-index: 5;              /* 任意：mark-lineより前面にしたいとき */
+  position: relative;      /* z-index有効化用 */
+  font-family: 'Kavoon', sans-serif; 
+  
+}
+
+.tweets-topcontainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 100px;
+  padding-bottom: 100px;
+}
+
+.teacher-top{
+  position: relative;
+  width: 100%;
+  height: 600px; /* 画像と同じ高さに固定 */
+  overflow: hidden;
+}
+
+.teacheroverlay-box {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* 半透明の黒塗り */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.teacheroverlay-text {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-family: sans-serif;
+  line-height: 1.6;
+}
+
+.letteroverlay-text {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-family: sans-serif;
+  line-height: 1.6;
+}
+
+.studentoverlay-text {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-family: sans-serif;
+  line-height: 1.6;
+}
+
+.activityoverlay-text {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-family: sans-serif;
+  line-height: 1.6;
+}
+
+.outlineoverlay-text {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-family: sans-serif;
+  line-height: 1.6;
+}
+
+.questionoverlay-text {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-family: sans-serif;
+  line-height: 1.6;
+}
+
+.contactoverlay-text {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-family: sans-serif;
+  line-height: 1.6;
+}
+
+.planoverlay-text {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-family: sans-serif;
+  line-height: 1.6;
+}
+
+.outline-about {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-top: 60px;
+  padding-bottom: 60px;
+   margin-left: -40px; /* ← お好みでずらす量（例：-20px〜-80px） */
+}
+
+.outlineaboutfusen {
+  width: 500px;
+  height: auto;
+}
+
+.outline-bluefusen-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.outlineabout-text {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  width: 80%;
+  color: #333;
+  font-size: 0.95em;
+  line-height: 1.4;
+  font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+
+.teacher-about {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.teacher-image,
+.teacheraboutfusen {
+  width: 500px;
+  height: auto;
+}
+
+.teacher-fusen-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.teacher-text {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  width: 80%;
+  color: #333;
+  font-size: 0.95em;
+  line-height: 1.4;
+  font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+
+.teacher-self {
+  display: flex;
+  justify-content: center;  /* ← 中央寄せ */
+  align-items: center;
+  width: 100%;
+  
+  background-color: #F5DEB3; 
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.teacher-bigfusen-wrapper {
+  position: relative;
+  width: 60%;
+  margin: 0 auto;            /* ← 中央寄せのための保険 */
+}
+
+.teacherselffusen {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;  /* ← ブロック要素でも中央に */
+  
+}
+
+.teacherself-text {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  color: #333;
+  font-size: 1em;
+  line-height: 1.8;
+  font-family: "ヒラギノ角ゴ ProN", sans-serif;
+  word-wrap: break-word;
+}
+
+.outline-contents {
+  display: flex;
+  justify-content: center;  /* ← 中央寄せ */
+  align-items: center;
+  width: 100%; 
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+
+.outlinecontent-text {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  color: #333;
+  font-size: 1em;
+  line-height: 1.8;
+  font-family: "ヒラギノ角ゴ ProN", sans-serif;
+  word-wrap: break-word;
+}
+
+
+
+.image-text-pairs-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 5%;
+  flex-wrap: wrap; /* 画面が狭いときに折り返し */
+  margin-top: 2%;
+  margin-bottom: 2%;
+ 
+}
+
+.image-text-pair {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 20%; /* 必要に応じて調整 */
+}
+
+.image-text-pair img {
+  width: 150px;
+  height: 150px;
+  border-radius: 8px;
+  
+}
+
+.image-text-pair p {
+  margin-top: 8px;
+  font-size: 0.8em;
+  color: #333;
+}
+
+.outlineplan-text {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  color: #333;
+  font-size: 1em;
+  line-height: 1.8;
+  font-family: "ヒラギノ角ゴ ProN", sans-serif;
+  word-wrap: break-word;
+}
+
+.outlineplanindex {
+  margin-top: 10%;
+  max-width: 100%;
+  height: auto;
+}
+
+.outline-review {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-top: 60px;
+  padding-bottom: 60px;
+   margin-left: -40px; /* ← お好みでずらす量（例：-20px〜-80px） */
+}
+
+.outline-orengefusen-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.outlinereview-text {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  width: 80%;
+  color: #333;
+  font-size: 0.95em;
+  line-height: 1.4;
+  font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+.teacher-recruit {
+  display: flex;
+  justify-content: center;  /* ← 中央寄せ */
+  align-items: center;
+  width: 100%; 
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+
+.teacherrecruit-text {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  color: #333;
+  font-size: 1em;
+  line-height: 1.8;
+  font-family: "ヒラギノ角ゴ ProN", sans-serif;
+  word-wrap: break-word;
+}
+
+.teacher-paper {
+  display: flex;
+  justify-content: center;  /* ← 中央寄せ */
+  align-items: center;
+  width: 100%;
+  background-color: #F5DEB3; 
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+
+.teacherpaper-text {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  color: #333;
+  font-size: 1em;
+  line-height: 1.8;
+  font-family: "ヒラギノ角ゴ ProN", sans-serif;
+  word-wrap: break-word;
+}
+
+
+.top-logo {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: auto;
+}
+
+/* ボタン配置：右端で縦並び */
+
+.letter-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-link,
+.delete-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85em;
+  padding: 4px 8px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #333;
+  height: 30px; /* 任意で高さ指定もOK */
+  line-height: 1;
+  box-sizing: border-box;
+}
+
+/* 削除ボタンだけ色変更 */
+.delete-button {
+  background-color: #ffecec;
+  color: #c00;
+  border: none; /* ボタンのデフォルト枠を消す */
+}
+
+/* button_to の <form> にも調整 */
+.letter-actions form {
+  display: inline-flex;
+  margin: 0;
+}

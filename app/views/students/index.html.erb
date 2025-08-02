@@ -1,0 +1,28 @@
+<div class="teacher-top">
+  <%= image_tag "IMG_2030.jpeg", class: "top-image" %>
+  <div class="teacheroverlay-box">
+    <div class="studentoverlay-text">
+      <h1>ゼ　ミ　生　紹　介</h1>
+    </div>
+  </div>
+</div>
+
+
+<div class="students-container">
+  <% @students.reverse_each do |t| %>
+    <%= link_to student_path(t.id), class: "student-link" do %> <!-- ここでリンクを囲む -->
+      <div class="student">
+        <% if t.image.attached? %>
+          <%= image_tag t.image, size: '250x200'%>
+        <% end %>
+          <h3><%= t.name %></h3>
+          <%= t.about %>
+      <% if user_signed_in? && current_user.id == t.user_id %>
+        <%= link_to "編集する", edit_student_path(t.id) %>
+        <%= button_to "削除する", student_path(t.id), method: :delete %>
+      <% end %> 
+      </div>
+    <% end %> <!-- link_to を閉じる -->
+  <% end %>
+</div>
+
