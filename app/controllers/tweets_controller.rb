@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
 
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :mypage]
     
   def index
         @tweets = Tweet.order(created_at: :asc)
