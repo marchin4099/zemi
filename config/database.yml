@@ -27,4 +27,3 @@ production:
   adapter: postgresql # 追加
   encoding: unicode # 追加
   url: <%= ENV["DATABASE_URL"] %> # 追加
-  database: storage/production.sqlite3
