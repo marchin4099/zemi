@@ -74,7 +74,3 @@ gem 'activestorage-cloudinary-service'
 
 
 gem 'pg'
-
-group :production do
-  gem 'pg'
-end
