@@ -7,16 +7,24 @@
   </div>
 </div>
 
+<div class="students-note">
+  <h1>Students</h1>
+</div>
 
 <div class="students-container">
   <% @students.reverse_each do |t| %>
     <%= link_to student_path(t.id), class: "student-link" do %> <!-- ここでリンクを囲む -->
-      <div class="student">
+      <div class="student-paperindex">
+        <div class="gold-thumbtack">
+           <div class="gold-head"></div>
+            <div class="gold-head-bottom"></div>
+              <div class="goldpin-needle"></div>
+        </div>
+
         <% if t.image.attached? %>
           <%= image_tag t.image, size: '250x200'%>
         <% end %>
           <h3><%= t.name %></h3>
-          <%= t.about %>
       <% if user_signed_in? && current_user.id == t.user_id %>
         <%= link_to "編集する", edit_student_path(t.id) %>
         <%= button_to "削除する", student_path(t.id), method: :delete %>

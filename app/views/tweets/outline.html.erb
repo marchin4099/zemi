@@ -1,3 +1,7 @@
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+</haad>
+
 <div class="teacher-top">
   <%= image_tag "IMG_2030.jpeg", class: "top-image" %>
   <div class="teacheroverlay-box">
@@ -7,46 +11,71 @@
   </div>
 </div>
 
-<div class="outline-about">
-  <div class="outline-bluefusen-wrapper">
-    <%= image_tag "—Pngtree—colorful sticky note_6929168 (1) 青.png", class: "outlineaboutfusen" %>
-    <div class="outlineabout-text">
+<div class="overview-note">
+  <h1>Overview</h1>
+</div>
+
+<!-- 及川ゼミとは -->
+<div class="section">
+  <div class="sticky-noteblue">
+    <div class="tapeblue"></div>
+    <div class="note-content">
       <h1><strong>及川ゼミとは</strong></h1>
       <br>
-    <h2><u>教員</u></h2><p>及川雅斗</p><br>
-    <h2><u>テーマ</u></h2><p>経済学とデータ分析で身近な現象・課題を読み解く</p><br>
-    <h2><u>目標</u></h2><p>このゼミでは、身近な現象や課題について、「仮説設定 →データ収集→ 分析・解釈 →論文執筆」のプロセスを自分で行う力を身につけることを目指します。</p><br>
-    </div>
-  </div>
-</div>
-
-<div class="teacher-about">
-  <%= image_tag "及川先生　スリム.png", class: "teacher-image" %>
-
-  <div class="teacher-fusen-wrapper">
-    <%= image_tag "—Pngtree—colorful sticky note_6929168 (1) 黄緑.png", class: "teacheraboutfusen" %>
-    <div class="teacher-text">
-      <h1><strong>及川　雅斗</strong></h1>
-      <br><br>
-      <h2><u>所属</u></h2><p><br>早稲田大学<br>教育・総合科学学術院 教育学部</p><br>
-      <h2><u>専門</u></h2><p><br>医療経済学・応用ミクロ経済学</p>
-    </div>
-  </div>
-</div>
-
-<div class="outline-contents">
-  <div class="teacher-bigfusen-wrapper">
-    <%= image_tag "デカい付箋　白.png", class: "teacherselffusen" %>
-    <div class="outlinecontent-text">
-      <h1><strong>授業内容</strong></h1>
+      <h2>教員</h2>
+      <p>及川雅斗</p>
       <br>
+      <h2>テーマ</h2>
+      <p>経済学とデータ分析で身近な現象・課題を読み解く</p>
+      <br>
+      <h2>目標</h2>
+      <p>このゼミでは、身近な現象や課題について、「仮説設定 → データ収集 → 分析・解釈 → 論文執筆」のプロセスを自分で行う力を身につけることを目指します。</p>
+    </div>
+  </div>
+</div>
 
-      <h2><u>授業頻度</u></h2>
+<!-- 教員紹介 -->
+<div class="section">
+  <div class="teacher-about-flex">
+    <!-- 教員の写真 -->
+    <div class="teacher-image-wrapper">
+      <%= image_tag "及川先生　スリム.png", class: "teacher-image" %>
+    </div>
+
+    <!-- 教員の紹介付箋 -->
+    <div class="teacher-fusen-wrapper">
+      <div class="sticky-notegreen">
+        <div class="tapegreen"></div>
+        <div class="note-content">
+          <h1><strong>及川　雅斗</strong></h1>
+          <br>
+          <h2>所属</h2>
+          <p>早稲田大学<br>教育・総合科学学術院 教育学部</p>
+          <br>
+          <h2>専門</h2>
+          <p>医療経済学・応用ミクロ経済学</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- 授業内容 -->
+<div class="section">
+  <div class="custom-fusen">
+    <div class="round-pin-red">
+      <div class="pin-head-red"></div>
+      <div class="pin-needle-red"></div>
+    </div>
+    <div class="outlinecontent-text">
+      <h1><strong>授業概要</strong></h1>
+      <br>
+      <h2>授業頻度</h2>
       <p>週１or2コマ（サブゼミあり）</p>
       <br>
-
-      <h2><u>授業内容</u></h2>
-
+      <h2>授業内容</h2>
       <div class="image-text-pairs-wrapper">
         <div class="image-text-pair">
           <%= image_tag "ゼミ教科書イメージ.png", class: "textimage" %>
@@ -54,7 +83,7 @@
         </div>
         <div class="image-text-pair">
           <%= image_tag "ゼミグループワークイメージ.png", class: "groupimage" %>
-          <p>グループ論文作成・発表</p>
+          <p>グループ論文</p>
         </div>
         <div class="image-text-pair">
           <%= image_tag "ゼミ時事ネタイメージ.png", class: "newsimage" %>
@@ -62,40 +91,43 @@
         </div>
         <div class="image-text-pair">
           <%= image_tag "ゼミ統計ソフトイメージ.png", class: "softimage" %>
-          <p>統計ソフトStataの学習</p>
+          <p>統計ソフトStata</p>
         </div>
       </div>
-
-      <h2><u>課外活動</u></h2>
-      <br>
+      <h2>課外活動</h2>
       <p>ゼミ合宿　インゼミ　etc</p>
     </div>
   </div>
 </div>
 
 
-<div class="outline-plan">
-  <div class="teacher-bigfusen-wrapper">
-    <%= image_tag "デカい付箋　白.png", class: "teacherselffusen" %>
+<!-- カリキュラム -->
+<div class="section">
+  <div class="custom-fusen">
+    <div class="round-pin-pink">
+      <div class="pin-head-pink"></div>
+      <div class="pin-needle-pink"></div>
+    </div>
     <div class="outlineplan-text">
       <h1><strong>カリキュラム</strong></h1>
       <%= image_tag "スクリーンショット 2025-07-24 204323.png", class: "outlineplanindex" %>
-      
     </div>
   </div>
 </div>
 
-<div class="outline-review">
-  <div class="outline-orengefusen-wrapper">
-    <%= image_tag "—Pngtree—colorful sticky note_6929168 (1) 黄色.png", class: "outlineaboutfusen" %>
-    <div class="outlinereview-text">
+
+<!-- ゼミ生の声 -->
+<div class="section">
+  <div class="sticky-noteorange">
+    <div class="tapeorange"></div>
+    <div class="note-content">
       <h1><strong>ゼミ生の声</strong></h1>
       <br>
-        ・先生がどんな質問にも丁寧に答えてくれる<br>
-        ・先生が優しい<br>
-        ・本格的なデータ分析ができる<br>
-        ・発言しやすい<br>
-        ・　etc
+      <p>・先生がどんな質問にも丁寧に答えてくれる<br>
+      ・先生が優しい<br>
+      ・本格的なデータ分析ができる<br>
+      ・発言しやすい<br>
+      ・etc</p>
     </div>
   </div>
 </div>

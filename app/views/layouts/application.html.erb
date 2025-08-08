@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Zemi</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,43 +12,109 @@
   </head>
 
   <body>
+    <header>
+      <h1>早稲田大学教育学部　及川ゼミ</h1>
 
-  
-  <header>
-  <h1>早稲田大学教育学部　及川ゼミ</h1>
-  <div class="header-list">
-    <%= link_to 'Top', :controller => "tweets", :action => "top" %>
-    <div class="aboutus">
-      <a href="#" class="aboutus-link">About us</a>
-      <div class="links">
-        <%= link_to 'Overview', :controller => "tweets", :action => "outline" %>
-        <%= link_to 'Q&A', :controller => "tweets", :action => "question" %>
-      </div>
-    </div>
-    <div class="activities">
-      <a href="#" class="activities-link">Activities</a>
-      <div class="links">
+      <!-- ハンバーガーメニュー（スマホ用） -->
+      <div class="menu-toggle">☰</div>
+
+      <nav class="header-list" id="navMenu">
+        <%= link_to 'Top', controller: "tweets", action: "top" %>
+
+        <div class="aboutus dropdown">
+        <a href="#" class="aboutus-link">About us <span class="caret">▼</span></a>
+        <div class="links">
+        <%= link_to 'Overview', controller: "tweets", action: "outline" %>
+        <%= link_to 'Q&A', controller: "tweets", action: "question" %>
+        </div>
+        </div>
+
+        <div class="activities dropdown">
+        <a href="#" class="activities-link">Activities <span class="caret">▼</span></a>
+        <div class="links">
         <%= link_to 'Plans', controller: "plans", action: "index" %>
         <%= link_to 'Blogs', controller: "tweets", action: "index" %>
-      </div>
-    </div>
-    <div class="members">
-      <a href="#" class="members-link">Members</a>
-      <div class="links">
-        <%= link_to 'Teacher', :controller => "tweets", :action => "teacher" %>
-        <%= link_to 'Students', :controller => "students", :action => "index" %>
-      </div>
-    </div>
-    <%= link_to 'News', :controller => "letters", :action => "index" %>
-    <%= link_to 'Contact', :controller => "contacts", :action => "new" %>
-  </div>
- </header>
- <main>
+        </div>
+        </div>
 
-    <%= yield %>
- </main>
- <footer>
-      <p>Copyright © Oikawa Seminar Rights Reserved.</p>
-    </footer>
+        <div class="members dropdown">
+        <a href="#" class="members-link">Members <span class="caret">▼</span></a>
+         <div class="links">
+         <%= link_to 'Teacher', controller: "tweets", action: "teacher" %>
+          <%= link_to 'Students', controller: "students", action: "index" %>
+        </div>
+        </div>
+
+        <%= link_to 'News', controller: "letters", action: "index" %>
+        <%= link_to 'Contact', controller: "contacts", action: "new" %>
+      </nav>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer>
+    <div class="footer-sns">
+    <a href="https://www.instagram.com/oikawa_zemiii?igsh=MTk3d201NWJvczlxaA==" target="_blank" rel="noopener">
+      <%= image_tag "インスタ　アイコン.png", alt: "Instagram", class: "insta-icon" %>
+    </a>
+     </div>
+    <nav class="footer-links">
+    <%= link_to 'トップページ', controller: "tweets", action: "top" %>
+    <%= link_to 'ゼミ概要', controller: "tweets", action: "outline" %>
+    <%= link_to 'Q&A', controller: "tweets", action: "question" %>
+    <%= link_to '活動予定', controller: "plans", action: "index" %>
+    <%= link_to '活動ブログ', controller: "tweets", action: "index" %>
+    <%= link_to '教員紹介', controller: "tweets", action: "teacher" %>
+    <%= link_to 'ゼミ生紹介', controller: "students", action: "index" %>
+    <%= link_to 'お知らせ', controller: "letters", action: "index" %>
+    <%= link_to 'お問い合わせ', controller: "contacts", action: "new" %>
+    </nav>
+  <p class="footer-copy">Copyright © Oikawa Seminar Rights Reserved.</p>
+</footer>
+
+
+    <!-- ✅ スマホ時のみクリックでメニュー展開 -->
+    <script>
+  document.addEventListener("turbo:load", function () {
+    const nav = document.getElementById("navMenu");
+    const menuToggle = document.querySelector(".menu-toggle");
+
+    // ☰ ハンバーガーメニュー開閉
+    if (menuToggle) {
+      menuToggle.onclick = () => {
+        nav.classList.toggle("active");
+      };
+    }
+
+    // イベントの重複防止：一度登録したらしないように（data-listened で判別）
+    document.querySelectorAll(".dropdown > a").forEach(link => {
+      if (!link.dataset.listened) {
+        link.addEventListener("click", function (e) {
+          if (window.innerWidth <= 1920) {
+            e.preventDefault();
+            const parent = this.closest(".dropdown");
+            parent.classList.toggle("open");
+          }
+        });
+        link.dataset.listened = "true"; // マークして再登録を防止
+      }
+    });
+
+    document.querySelectorAll(".links a").forEach(link => {
+      if (!link.dataset.listened) {
+        link.addEventListener("click", () => {
+          if (window.innerWidth <= 1920) {
+            nav.classList.remove("active");
+            document.querySelectorAll(".dropdown").forEach(d => d.classList.remove("open"));
+          }
+        });
+        link.dataset.listened = "true";
+      }
+    });
+  });
+</script>
+
   </body>
 </html>

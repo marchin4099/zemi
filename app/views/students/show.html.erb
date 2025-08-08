@@ -1,8 +1,18 @@
-<h1>ツイート詳細</h1>
-<div class="student-show">
-  <% if @student.image.attached? %>
-    <%= image_tag @student.image, size: '300x300' %>
-  <% end %>
-  <h3><%= @student.name %></h3>
-  <p><%= @student.about %></p>
+<div class="section">
+  <div class="showcustom-fusen">
+    <div class="gold-thumbtack">
+           <div class="gold-head"></div>
+            <div class="gold-head-bottom"></div>
+              <div class="goldpin-needle"></div>
+        </div>
+      <div class="tweet-show">
+        <h1><%= @student.name %></h1>
+        <% if @student.image.attached? %>
+            <%= image_tag @student.image, size: '300x300' %>
+        <% end %>
+        <p><%= @student.about %></p>
+      </div>
+  </div>
 </div>
+
+

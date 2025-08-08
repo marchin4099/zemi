@@ -1,10 +1,19 @@
-<h1>ツイート詳細</h1>
-<div class="tweet-show">
-  <% if @tweet.image.attached? %>
-    <%= image_tag @tweet.image, size: '300x300' %>
-  <% end %>
-  <h3><%= @tweet.name %></h3>
-  <p><%= @tweet.about %></p>
-  <p><%= @tweet.day %></p>
-  <p><%= @tweet.place %></p>
+<div class="section">
+  <div class="showcustom-fusen">
+   <div class="wood-thumbtack">
+           <div class="wood-head"></div>
+            <div class="wood-head-bottom"></div>
+              <div class="woodpin-needle"></div>
+        </div>
+    <div class="tweet-show">
+      <h1><%= @tweet.name %></h1>
+      <% if @tweet.image.attached? %>
+        <%= image_tag @tweet.image, size: '300x300' %>
+      <% end %>
+      <p><%= @tweet.about %></p>
+      <p><%= Date.parse(@tweet.day).strftime("%Y年%-m月%-d日") %></p>
+      <p><%= @tweet.place %></p>
+    </div>
+  </div>
 </div>
+

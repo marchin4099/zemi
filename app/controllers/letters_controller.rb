@@ -3,7 +3,7 @@ class LettersController < ApplicationController
 before_action :authenticate_user!, only: [:new, :create]
 
 def index
-    @letters = Letter.order(created_at: :desc) .limit(15)# 新しい順に並べる
+    @letters = Letter.order(created_at: :desc) .limit(19)# 新しい順に並べる
 end
 
 def new

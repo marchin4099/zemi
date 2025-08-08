@@ -57,7 +57,7 @@ class TweetsController < ApplicationController
   end
 
   def top
-  @tweets = Tweet.order(created_at: :desc).limit(3)
+  @tweets = Tweet.order(created_at: :desc).limit(1)
   @letters = Letter.order(created_at: :desc).limit(3)
 end
 

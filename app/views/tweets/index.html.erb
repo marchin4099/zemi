@@ -7,23 +7,39 @@
   </div>
 </div>
 
+<div class="blogs-note">
+  <h1>Blogs</h1>
+</div>
+
 <% if user_signed_in? %>
   
 <% end %>
 <div class="tweets-container">
   <% @tweets.reverse_each do |t| %>
-    <%= link_to tweet_path(t.id), class: "tweet-link" do %> <!-- ここでリンクを囲む -->
-      <div class="tweet">
+    <%= link_to tweet_path(t.id), class: "tweet-link" do %>
+      <div class="tweet-paperindex">
+        <div class="wood-thumbtack">
+           <div class="wood-head"></div>
+            <div class="wood-head-bottom"></div>
+              <div class="woodpin-needle"></div>
+        </div>
+
         <% if t.image.attached? %>
-            <%= image_tag t.image, size: '250x200' %>
+          <%= image_tag t.image, size: '250x200' %>
         <% end %>
+
         <h3><%= t.name %></h3>
-        <%= t.day %>
-      <% if user_signed_in? && current_user.id == t.user_id %>
-        <%= link_to "編集する", edit_tweet_path(t.id) %>
-        <%= button_to "削除する", tweet_path(t.id), method: :delete %>
-      <% end %>
+
+        <%# ✅ 日付を整形表示 %>
+        <p><%= t.day.present? ? Date.parse(t.day).strftime("%Y年%-m月%-d日") : "日付未設定" %></p>
+
+        <% if user_signed_in? && current_user.id == t.user_id %>
+          <%= link_to "編集する", edit_tweet_path(t.id) %>
+          <%= button_to "削除する", tweet_path(t.id), method: :delete %>
+        <% end %>
       </div>
-    <% end %> <!-- link_to を閉じる -->
+    <% end %>
   <% end %>
 </div>
+
+

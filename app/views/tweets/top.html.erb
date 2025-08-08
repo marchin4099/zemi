@@ -4,6 +4,8 @@
     <!--変更した部分は以下の一行！！-->
     <link rel="stylesheet" type="text/css" href="stylesheets/index.css">
     <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 </head>
 
 
@@ -23,44 +25,58 @@
 </div>
 
 
-<div class="sticky-note">
-  <h1>Recent News</h1>
-</div>
-<div class="letters-toptable">
-    <div class="section-toplines">
+
+<div class="top-about-flex">
+    <div class="toprecentnews">
+      <div class="sticky-note">
+        <h1>Recent News</h1>
+    </div>
+    <div class="letters-toptable">
+  <div class="tape"></div> <!-- ← テープ追加 -->
+
+  <div class="section-toplines">
     <h1>新着情報</h1>
     <%= image_tag "書く png.png", class: "topletter-image" %>
-      <div class="topline mark-line"></div>
-    </div>
-<% if @letters.any? %>  <!-- 複数件表示 -->
-  <% @letters.each do |letter| %>
-    <%= link_to letter_path(letter), class: "letter-link" do %>
-      <div class="letter">
-        <h3><%= letter.name %></h3>  <!-- 投稿者名など -->
-      </div>
+    <div class="topline mark-line"></div>
+  </div>
+
+  <% if @letters.any? %>
+    <% @letters.each do |letter| %>
+      <%= link_to letter_path(letter), class: "letter-link" do %>
+        <div class="letter">
+          <h3><%= letter.name %></h3>
+        </div>
+      <% end %>
     <% end %>
+  <% else %>
+    <p>まだ投稿がありません。</p>
   <% end %>
-<% else %>
-  <p>まだ投稿がありません。</p>
-<% end %>
 </div>
 
-<div class="toptweets">
+  </div>
+
+    <div class="toptweets">
   <div class="tweets-note">
     <h1>Recent Blogs</h1>
   </div>
 
   <div class="tweets-topcontainer">
-    <% @tweets.last(3).reverse.each do |tweet| %>
-      <%= link_to tweet_path(tweet.id), class: "tweet-link" do %>
-        <div class="tweet">
-          <% if tweet.image.attached? %>
-            <%= image_tag tweet.image, size: '250x200' %>
-          <% end %>
-          <h3><%= tweet.name %></h3>
-          <p><%= tweet.day %></p>
+  <% @tweets.last(1).reverse.each do |tweet| %> 
+    <%= link_to tweet_path(tweet.id), class: "tweet-link" do %>
+      <div class="tweet-paper">
+        <div class="wood-thumbtack">
+           <div class="wood-head"></div>
+            <div class="wood-head-bottom"></div>
+              <div class="woodpin-needle"></div>
         </div>
-      <% end %>
+        <% if tweet.image.attached? %>
+          <%= image_tag tweet.image, size: '250x200' %>
+        <% end %>
+        <h3><%= tweet.name %></h3>
+        <p><%= Date.parse(tweet.day).strftime("%Y年%-m月%-d日") %></p>
+      </div>
     <% end %>
-  </div>
+  <% end %>
+</div>
+
 </div>

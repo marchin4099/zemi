@@ -1,9 +1,16 @@
-<h1>お知らせ</h1>
-<h2>詳細</h2>
-<div class="letter">
-  <p><%= @letter.day %></p>
-  <h3><%= @letter.name %></h3>
-  <p><%= @letter.about %></p>
+
+<div class="sticky-notepink">
+  <div class="tapepink"></div>
+  <div class="note-content">
+    <div class="letter">
+      <p><%= @letter.day.strftime("%Y年%-m月%-d日") %></p>
+      <h1><%= @letter.name %></h1>
+      <p><%= @letter.about %></p>
+    </div>
+  </div>
 </div>
 
-<%= link_to "Tweet一覧に戻る", letters_path %>
+
+
+
+<%= link_to "お知らせ一覧に戻る", letters_path %>

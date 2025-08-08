@@ -4,6 +4,7 @@
 
 
 
+
 <div class="teacher-top">
   <%= image_tag "IMG_2030.jpeg", class: "top-image" %>
   <div class="teacheroverlay-box">
@@ -13,55 +14,75 @@
   </div>
 </div>
 
-<div class="teacher-about">
-  <%= image_tag "及川先生　スリム.png", class: "teacher-image" %>
+<div class="teacher-note">
+  <h1>Teacher</h1>
+</div>
 
-  <div class="teacher-fusen-wrapper">
-    <%= image_tag "—Pngtree—colorful sticky note_6929168 (1) 黄緑.png", class: "teacheraboutfusen" %>
-    <div class="teacher-text">
-      <h1><strong>及川　雅斗</strong></h1>
-      <br><br>
-      <h2><u>所属</u></h2><p><br>早稲田大学<br>教育・総合科学学術院 教育学部</p><br>
-      <h2><u>専門</u></h2><p><br>医療経済学・応用ミクロ経済学</p>
+<!-- 教員紹介 -->
+<div class="section">
+  <div class="teacher-about-flex">
+    <!-- 教員の写真 -->
+    <div class="teacher-image-wrapper">
+      <%= image_tag "及川先生　スリム.png", class: "teacher-image" %>
+    </div>
+
+    <!-- 教員の紹介付箋 -->
+    <div class="teacher-fusen-wrapper">
+      <div class="sticky-notegreen">
+        <div class="tapegreen"></div>
+        <div class="note-content">
+          <h1><strong>及川　雅斗</strong></h1>
+          <br>
+          <h2><u>所属</u></h2>
+          <p>早稲田大学<br>教育・総合科学学術院 教育学部</p>
+          <br>
+          <h2><u>専門</u></h2>
+          <p>医療経済学・応用ミクロ経済学</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="teacher-self">
-  <div class="teacher-bigfusen-wrapper">
-    <%= image_tag "デカい付箋　白.png", class: "teacherselffusen" %>
-    <div class="teacherself-text">
-      <h1><strong>自己紹介</strong></h1>
-      <br><br>
-      私の専門は、量的評価を通じて、健康や教育に関する社会課題に対する解決策を考えることです。例えば、コロナ禍で関心が高まったーシャルディスタンス(SD)に関連した研究としては、小中学校の教室内でのSD拡大がインフルエンザによる学級閉鎖の発生を何%抑制するかを分析し、SD拡大が感染予防に有用な手段なのかの検証を行いました。web pageやresearchmapには経歴や他の研究について記載があります。
-    </div>
+
+<div class="custom-fusen">
+  <div class="round-pin-orange">
+    <div class="pin-head-orange"></div>
+    <div class="pin-needle-orange"></div>
+  </div>
+  <div class="teacherself-text">
+    <h1><strong>自己紹介</strong></h1>
+    <br><br>
+    <p>私の専門は、量的評価を通じて、健康や教育に関する社会課題に対する解決策を考えることです。例えば、コロナ禍で関心が高まったーシャルディスタンス(SD)に関連した研究としては、小中学校の教室内でのSD拡大がインフルエンザによる学級閉鎖の発生を何%抑制するかを分析し、SD拡大が感染予防に有用な手段なのかの検証を行いました。web pageやresearchmapには経歴や他の研究について記載があります。</p>
   </div>
 </div>
 
-
-<div class="teacher-recruit">
-  <div class="teacher-bigfusen-wrapper">
-    <%= image_tag "デカい付箋　白.png", class: "teacherselffusen" %>
-    <div class="teacherrecruit-text">
-      <h1><strong>履修希望の方へ</strong></h1>
-      <br><br>
-        私たちが住む世界は、少子高齢化、地球温暖化、紛争問題など、さまざまな社会課題に直面しています。これらの問題は、私たちに直接的・間接的に多様な影響を及ぼします。こうした身近な現象や課題を読み解くスキルは、みなさんが将来、何らかの課題に直面した際に大いに役立つでしょう。スキルの習得には時間がかかりますが、ゼミを通じて、これらのスキルを一緒に磨きたいと思う方の参加をお待ちしています。
-    </div>
+<div class="custom-fusen">
+  <div class="round-pin-blue">
+    <div class="pin-head-blue"></div>
+    <div class="pin-needle-blue"></div>
+  </div>
+  <div class="teacherrecruit-text">
+    <h1><strong>履修希望の方へ</strong></h1>
+    <br><br>
+    私たちが住む世界は、少子高齢化、地球温暖化、紛争問題など、さまざまな社会課題に直面しています。これらの問題は、私たちに直接的・間接的に多様な影響を及ぼします。こうした身近な現象や課題を読み解くスキルは、みなさんが将来、何らかの課題に直面した際に大いに役立つでしょう。スキルの習得には時間がかかりますが、ゼミを通じて、これらのスキルを一緒に磨きたいと思う方の参加をお待ちしています。
   </div>
 </div>
 
-<div class="teacher-paper">
-  <div class="teacher-bigfusen-wrapper">
-    <%= image_tag "デカい付箋　白.png", class: "teacherselffusen" %>
-    <div class="teacherpaper-text">
-      <h1><strong>主要著作</strong></h1>
-      <br><br>
-        ・論文 “Impact of Financial Support Expansion on Restaurant Entries and   Exits   During   the   COVID-19   Pandemic,” Small Business Economics, Volume 64, pp.645-689, February 2025 (open access) (大西宏一郎先生との共著).<br><br>
-        ・論文 “The role of education in health policy reform outcomes:Evidence from Japan,” European Journal of Health Economics,Volume 25, pp.49-76, February 2024 (open access).<br><br>
-        ・論文 “Do macroeconomic shocks in the local labor market lead to child   maltreatment   and   death?:   Empirical   evidence   from Japan,” Child Abuse & Neglect, Volume 124, February 2022,105430 (open access)(川村顕先生、姜 哲敏先生、山縣然太朗先生、野口晴子先生との共著).<br>
-    </div>
+<div class="custom-fusen">
+  <div class="round-pin-yellowgreen">
+    <div class="pin-head-yellowgreen"></div>
+    <div class="pin-needle-yellowgreen"></div>
+  </div>
+  <div class="teacherpaper-text">
+    <h1><strong>主要著作</strong></h1>
+    <br><br>
+    ・論文 “Impact of Financial Support Expansion on Restaurant Entries and   Exits   During   the   COVID-19   Pandemic,” Small Business Economics, Volume 64, pp.645-689, February 2025 (open access) (大西宏一郎先生との共著).<br><br>
+    ・論文 “The role of education in health policy reform outcomes:Evidence from Japan,” European Journal of Health Economics,Volume 25, pp.49-76, February 2024 (open access).<br><br>
+    ・論文 “Do macroeconomic shocks in the local labor market lead to child   maltreatment   and   death?:   Empirical   evidence   from Japan,” Child Abuse & Neglect, Volume 124, February 2022,105430 (open access)(川村顕先生、姜 哲敏先生、山縣然太朗先生、野口晴子先生との共著).
   </div>
 </div>
+
 
 
 

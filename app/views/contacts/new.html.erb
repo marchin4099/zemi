@@ -1,3 +1,7 @@
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+</haad>
+
 <div class="teacher-top">
   <%= image_tag "IMG_2030.jpeg", class: "top-image" %>
   <div class="teacheroverlay-box">
@@ -7,26 +11,36 @@
   </div>
 </div>
 
-<h1>(自分の題名)</h1>
-<h3>新規投稿ページ</h3>
+<div class="contact-note">
+  <h1>Contact</h1>
+</div>
+<div class="contactform">
+<h2>ゼミ生へのご質問は、下記のお問い合わせフォームまたはInstagramのDMよりお気軽にご連絡ください。</h2>
+</div>
+<%= form_for @contact, html: { class: "contact-form" } do |f| %>
+  <div class="form-field">
+    <%= f.label :name, "名前" %><br>
+    <%= f.text_field :name, class: "form-input" %>
+  </div>
 
-<%= form_for @contact do |f| %>
-  <div class="field">
-    <%= f.label :名前 %>
-    <%= f.text_field :name, size: 30 %>
+  <div class="form-field">
+    <%= f.label :mail, "メールアドレス" %><br>
+    <%= f.text_field :mail, class: "form-input" %>
   </div>
-  <div class="field">
-    <%= f.label :メールアドレス %>
-    <%= f.text_field :mail, size: 30 %>
+
+  <div class="form-field">
+    <%= f.label :title, "件名" %><br>
+    <%= f.text_field :title, class: "form-input" %>
   </div>
-  <div class="field">
-    <%= f.label :件名 %>
-    <%= f.text_field :title, size: 30 %>
+
+  <div class="form-field">
+    <%= f.label :about, "内容" %><br>
+    <%= f.text_area :about, class: "form-textarea" %>
   </div>
-  <div class="field">
-    <%= f.label :内容 %>
-    <%= f.text_area :about, size: "30x2" %>
+
+  <div class="form-actions">
+    <%= f.submit "送信する", class: "submit-button" %>
   </div>
-  <%= f.submit "投稿する" %>
 <% end %>
+
 

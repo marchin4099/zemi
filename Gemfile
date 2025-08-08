@@ -71,6 +71,10 @@ gem 'devise'
 gem 'cloudinary'
 gem 'activestorage-cloudinary-service'
 
+
+
+gem 'pg'
+
 group :production do
   gem 'pg'
 end
