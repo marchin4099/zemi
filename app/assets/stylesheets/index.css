@@ -1445,9 +1445,6 @@ footer {
 }
 
 @media screen and (max-width: 600px) {
-  .outlineplan-text h1{
-   
-  }
 
   .outlineplan-text img {
     position: relative;
@@ -2395,7 +2392,7 @@ footer {
 
 .tweet-paper {
   position: relative;
-  width: min(90%, 600px);
+  width: 37.5rem;
   height: 27rem;
   background-color: #fefefe;
   border: 1px solid #ccc;
