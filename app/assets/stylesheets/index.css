@@ -10,7 +10,10 @@ body {
   font-family: 'Zen Maru Gothic', sans-serif;
 }
 
-
+html {
+  -webkit-text-size-adjust: 100%; /* もしくは none（強めに止める） */
+  text-size-adjust: 100%;
+}
 
 header {
   position: relative;
