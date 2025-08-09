@@ -40,6 +40,7 @@ h1 {
   color: white;
   text-decoration: none;
   font-family: 'Kavoon', sans-serif;
+  font-size: 1rem;
 }
 
 .header-list a:hover {
@@ -54,7 +55,7 @@ h1 {
 }
 
 .dropdown > a {
-  font-size: 16px;
+  font-size: 1rem;
   padding: 10px;
   display: inline-block;
   cursor: pointer;
@@ -108,10 +109,10 @@ h1 {
 @media screen and (max-width: 1279px) {
   .menu-toggle {
     display: block;
-    font-size: 2rem;
     color: white;
     cursor: pointer;
     padding: 1rem;
+    font-size: 2rem;
   }
 
   .header-list {
@@ -161,7 +162,8 @@ h1 {
     display: block;
     color: white;
     text-decoration: none;
-    font-size: 16px; /* ← これを追加して統一 */
+    font-size: 1rem;
+    
   }
 
   .links a {
