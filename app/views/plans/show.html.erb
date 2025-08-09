@@ -1,8 +1,14 @@
-
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+</head>
 
 <div class="section">
   <div class="showcustom-fusen">
-    <div class="thumbtack"></div>
+    <div class="silver-thumbtack">
+          <div class="silver-head-bottom"></div> <!-- 厚み部分（後ろ） -->
+          <div class="silver-head"></div>        <!-- 表面 -->
+          <div class="silverpin-needle"></div>   <!-- 針 -->
+        </div>
       <div class="tweet-show">
         <h1><%= @plan.name %></h>
         <% if @plan.image.attached? %>
@@ -11,5 +17,9 @@
         <p><%= @plan.about %></p>
       </div>
   </div>
+</div>
+
+<div class="back-button-wrapper">
+  <%= link_to "一覧に戻る", plans_path, class: "back-button" %>
 </div>
 

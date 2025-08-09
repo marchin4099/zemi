@@ -363,7 +363,7 @@ footer {
   padding-right: 10vw;
   width: 95vw;
   margin: 0 auto;
-  margin-bottom: 25vw;         /* 元: 18.75rem ≒ 300px */
+  margin-bottom: 10vw;         /* 元: 18.75rem ≒ 300px */
   background-color: #fefefe;
   border: 0.083vw solid #ccc;  /* 元: 1px */
   border-radius: 0.67vw;       /* 元: 8px */
@@ -858,6 +858,7 @@ footer {
 
   .letters-toptable::before {
     left: 1rem;
+    display: none;
   }
 
   .letter-link {
@@ -882,9 +883,7 @@ footer {
     right: 1rem;
   }
 
-  .letters-toptable::before {
-    display: none;
-  }
+
 }
 
 
@@ -1237,7 +1236,7 @@ footer {
   color: white;
   text-align: center;
   font-weight: bold;
-  font-family: sans-serif;
+  font-family: 'Zen Maru Gothic', sans-serif;
   line-height: 1.6;
 }
 
@@ -1245,7 +1244,7 @@ footer {
   color: white;
   text-align: center;
   font-weight: bold;
-  font-family: sans-serif;
+  font-family: 'Zen Maru Gothic', sans-serif;
   line-height: 1.6;
 }
 
@@ -1253,7 +1252,7 @@ footer {
   color: white;
   text-align: center;
   font-weight: bold;
-  font-family: sans-serif;
+  font-family: 'Zen Maru Gothic', sans-serif;
   line-height: 1.6;
 }
 
@@ -1261,7 +1260,7 @@ footer {
   color: white;
   text-align: center;
   font-weight: bold;
-  font-family: sans-serif;
+  font-family: 'Zen Maru Gothic', sans-serif;
   line-height: 1.6;
 }
 
@@ -1269,9 +1268,8 @@ footer {
   color: white;
   text-align: center;
   font-weight: bold;
-  font-family: sans-serif;
+  font-family: 'Zen Maru Gothic', sans-serif;
   line-height: 1.6;
-  font-family: "Zen Maru Gothic", sans-serif;
 
 }
 
@@ -1279,7 +1277,7 @@ footer {
   color: white;
   text-align: center;
   font-weight: bold;
-  font-family: sans-serif;
+  font-family: 'Zen Maru Gothic', sans-serif;
   line-height: 1.6;
 }
 
@@ -1287,7 +1285,7 @@ footer {
   color: white;
   text-align: center;
   font-weight: bold;
-  font-family: sans-serif;
+  font-family: 'Zen Maru Gothic', sans-serif;
   line-height: 1.6;
 }
 
@@ -1295,7 +1293,7 @@ footer {
   color: white;
   text-align: center;
   font-weight: bold;
-  font-family: sans-serif;
+  font-family: 'Zen Maru Gothic', sans-serif;
   line-height: 1.6;
 }
 
@@ -2314,7 +2312,7 @@ footer {
   justify-content: center;
   align-items: flex-start; 
   flex-wrap: nowrap;
-  margin-bottom: 10%;
+  margin-bottom: 5%;
   margin-top: 5%;
 }
 .toptweets {
@@ -2390,49 +2388,7 @@ footer {
 
 
 
-.tweet-paper {
-  position: relative;
-  width: 37.5rem;
-  height: 27rem;
-  background-color: #fefefe;
-  border: 1px solid #ccc;
-  border-radius: 0.5rem;
-  box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.05);
-  padding: 2rem 2rem 2rem; /* ← ここを戻す！ */
-  margin: 2rem auto ;  /* ← 上に画鋲分の余白を確保 */
-  box-sizing: border-box;
-  overflow: visible;
-  text-align: center;
-  font-family: "Yu Gothic", sans-serif;
-  z-index: 1;
-}
 
-
-
-/* 中のテキストや画像の調整 */
-.tweet-paper img {
-  width: 90%;
-  height: 16rem;
-  object-fit: cover;
-  border-radius: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.tweet-paper h3 {
-  font-size: 1.6rem;
-  margin-bottom: 0.5rem;
-  white-space: nowrap;           /* 1行にする */
-  overflow: hidden;              /* はみ出し非表示 */
-  text-overflow: ellipsis;       /* 「…」を表示 */
-  max-width: 100%;               /* 必須：親の幅で制限 */
-  display: block;                /* inlineだと効かない場合がある */
-}
-
-
-.tweet-paper p {
-  font-size: 1.2rem;
-  color: #555;
-}
 
 .tweet-paperindex {
   position: relative;
@@ -2443,7 +2399,7 @@ footer {
   border-radius: 0.5rem;
   box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.05);
   padding: 2rem 2rem 2rem; /* ← ここを戻す！ */
-  margin: 3rem  2rem auto ;  /* ← 上に画鋲分の余白を確保 */
+  margin: 2rem  2rem 3rem auto ;  /* ← 上に画鋲分の余白を確保 */
   box-sizing: border-box;
   overflow: visible;
   text-align: center;
@@ -2533,33 +2489,7 @@ footer {
   );
 }
 
-@media screen and (max-width: 768px) {
-  .tweet-paper {
-    width: 90vw;
-    height: auto;                 /* ← 固定高さ解除 */
-    padding: 1.5rem 1rem 1.5rem;  /* ← 余白縮小 */
-    margin: 2rem auto;
-  }
 
-  .tweet-paper img {
-    width: 100%;        /* スマホ幅にフィット */
-    height: auto;       /* 高さも自動調整 */
-  }
-
-  .tweet-paper h3 {
-    font-size: 1.2rem;  /* フォント少し小さく */
-  }
-
-  .tweet-paper p {
-    font-size: 1rem;    /* フォント少し小さく */
-  }
-
-  .tweet-paper .pin {
-    top: -0.8rem;       /* 小さい画面では少し浅めに出す */
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-}
 
 
 
@@ -2633,36 +2563,6 @@ footer {
 }
 
 
-
-@media screen and (max-width: 768px) {
-  .tweet-paper {
-    width: 90vw;
-    height: auto;                 /* ← 固定高さ解除 */
-    padding: 1.5rem 1rem 1.5rem;  /* ← 余白縮小 */
-    margin: 2rem auto;
-  }
-
-  .tweet-paper img {
-    width: 100%;        /* スマホ幅にフィット */
-    height: auto;       /* 高さも自動調整 */
-  }
-
-  .tweet-paper h3 {
-    font-size: 1.2rem;  /* フォント少し小さく */
-  }
-
-  .tweet-paper p {
-    font-size: 1rem;    /* フォント少し小さく */
-  }
-
-  .tweet-paper .pin {
-    top: -0.8rem;       /* 小さい画面では少し浅めに出す */
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-
-  
-}
 
 .round-pin {
   position: relative;
@@ -3267,7 +3167,33 @@ footer {
   }
 }
 
-.contactform h2{
+.contactform{
   text-align: center;
-  font-family: 'Zen Maru Gothic', sans-serif;
 }
+
+.back-button-wrapper {
+  text-align: center; /* 横方向中央寄せ */
+  margin: 2rem 0;     /* 上下の余白 */
+}
+
+.back-button {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background-color: #8b5a2b; /* 中間の茶色（SaddleBrown） */
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 0.4rem rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #a0522d; /* 少し明るい茶色 */
+}
+
+.back-button:active {
+  background-color: #704214; /* 濃い茶色 */
+}
+
