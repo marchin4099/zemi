@@ -21,7 +21,9 @@
       <div class="menu-toggle">☰</div>
 
       <nav class="header-list" id="navMenu">
+
         <%= link_to 'Top', controller: "tweets", action: "top" %>
+  
 
         <div class="aboutus dropdown">
         <a href="#" class="aboutus-link">About us <span class="caret">▼</span></a>
@@ -46,9 +48,9 @@
           <%= link_to 'Students', controller: "students", action: "index" %>
         </div>
         </div>
-
         <%= link_to 'News', controller: "letters", action: "index" %>
         <%= link_to 'Contact', controller: "contacts", action: "new" %>
+
       </nav>
     </header>
 
