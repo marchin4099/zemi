@@ -954,10 +954,10 @@ footer {
 
 
 
-.toptweets{
-  background-color: #FFFAF0;
-  padding-bottom: 50px;  /* ←ここで上余白を追加 */
-}
+
+
+
+
 
 .tweets-note {
   text-align: center;
@@ -2315,10 +2315,7 @@ footer {
   margin-bottom: 5%;
   margin-top: 5%;
 }
-.toptweets {
-  width: 50%;
-  min-width: 300px;
-}
+
 .toprecentnews {
   width: 50%;
   min-width: 300px;
@@ -2375,10 +2372,14 @@ footer {
     gap: 2rem;                /* 縦に余白（任意） */
   }
 
-  .toprecentnews,
-  .toptweets {
+  .toprecentnews{
     width: 90%;               /* スマホ画面に合わせて幅調整 */
     min-width: unset;         /* 固定幅を解除 */
+  }
+
+  .toptweets {
+    width: 90%;
+
   }
 
   .tweets-topcontainer {
@@ -2455,6 +2456,76 @@ footer {
   }
 
   .tweet-paperindex p {
+    font-size: 1rem;
+  }
+}
+
+
+.tweet-toppaperindex {
+  position: relative;
+  width: 40rem;
+  height: 27rem;
+  background-color: #fefefe;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.05);
+  padding: 2rem 2rem 2rem; /* ← ここを戻す！ */
+  margin: 2rem  2rem 3rem auto ;  /* ← 上に画鋲分の余白を確保 */
+  box-sizing: border-box;
+  overflow: visible;
+  text-align: center;
+  font-family: "Yu Gothic", sans-serif;
+  z-index: 1;
+}
+
+
+
+/* 中のテキストや画像の調整 */
+.tweet-toppaperindex img {
+  width: 90%;
+  height: 16rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tweet-toppaperindex h3 {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+  white-space: nowrap;           /* 1行にする */
+  overflow: hidden;              /* はみ出し非表示 */
+  text-overflow: ellipsis;       /* 「…」を表示 */
+  max-width: 100%;               /* 必須：親の幅で制限 */
+  display: block;                /* inlineだと効かない場合がある */
+}
+
+
+.tweet-toppaperindex p {
+  font-size: 1.2rem;
+  color: #555;
+}
+@media screen and (max-width: 768px) {
+  .tweet-toppaperindex {
+    width: 90vw;
+    height: auto;
+    min-height: 75vw;
+    padding: 1.5rem 1rem;
+    margin: 2rem auto 2rem;  /* 上に画鋲スペース考慮 */
+    border-radius: 0.4rem;
+  }
+
+  .tweet-toppaperindex img {
+    width: 100%;
+    height: auto;
+    max-height: 50vw;       /* 高さの上限を相対指定 */
+    object-fit: cover;
+  }
+
+  .tweet-toppaperindex h3 {
+    font-size: 1.3rem;
+  }
+
+  .tweet-toppaperindex p {
     font-size: 1rem;
   }
 }
