@@ -115,21 +115,16 @@ h1 {
 
 /* ========== スマホ用スタイル ========== */
 @media screen and (max-width: 1279px) {
-  .menu-toggle {
-    display: flex;
-  align-items: center;    /* 縦中央 */
-  justify-content: center;/* 横中央（必要なければ削除OK） */
-  height: 60px;           /* 既存値でOK */
-  /* width は必要なら指定（タップ面積確保）*/
-  /* width: 44px; */
-
+  .menu-toggle{
+  display: block;
+  height: 60px;
+  line-height: 60px;  /* 高さ＝行間 で縦中央 */
+  text-align: center; /* 横中央 */
   font-size: 30px;
-  line-height: 1;         /* iPhoneの行間ズレ防止 */
-  margin: 0;
-  padding: 0;
-  cursor: pointer;
   color: white;
-  }
+}
+
+
 
   .header-list {
     display: none;
