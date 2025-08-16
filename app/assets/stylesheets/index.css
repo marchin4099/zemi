@@ -118,6 +118,7 @@ h1 {
     cursor: pointer;
     padding: 1rem;
     font-size: 2rem;
+    justify-content: center;
   }
 
   .header-list {
