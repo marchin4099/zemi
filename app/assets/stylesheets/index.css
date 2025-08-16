@@ -124,6 +124,7 @@ h1 {
     line-height: 1;           /* ベースラインのズレ抑制 */
     color: white;
     -webkit-text-size-adjust: 100%; /* iPhoneの自動文字拡大を無効化 */
+    transform: translateY(-0.05em); /* 見た目だけ上に微調整 */
   }
 
 
