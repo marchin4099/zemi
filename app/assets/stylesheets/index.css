@@ -111,6 +111,8 @@ h1 {
 /* ← デフォルトでは非表示（PC向け） */
 .menu-toggle {
   display: none;
+  color: white;
+  -webkit-text-size-adjust: 100%; /* iPhoneの自動文字拡大を無効化 */
 }
 
 /* ========== スマホ用スタイル ========== */
@@ -120,11 +122,11 @@ h1 {
     align-items: center;      /* 縦中央 */
     justify-content: center;  /* 横中央 */
     height: 60px;
-    font-size: 30px;
+    font-size: 40px;
     line-height: 1;           /* ベースラインのズレ抑制 */
     color: white;
     -webkit-text-size-adjust: 100%; /* iPhoneの自動文字拡大を無効化 */
-    transform: translateY(-0.05em); /* 見た目だけ上に微調整 */
+    transform: translateY(-5px);
   }
 
 
