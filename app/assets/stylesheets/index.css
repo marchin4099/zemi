@@ -793,7 +793,8 @@ footer {
   padding-top: 9rem;
   padding-left: 5rem;
   padding-right: 5rem;
-  width: min(90%, 600px); /* 最大幅を設定しつつレスポンシブ */
+  width: 40rem;
+  height: 27rem;
   margin: auto;
   margin-top: 2rem;
   background-color: #fefefe;
@@ -2345,37 +2346,7 @@ footer {
   flex-wrap: wrap;
   justify-content: center;
 }
-.tweet-toptable {
-  width: 18.75rem;        /* 元: 300px */
-  height: 21.875rem;      /* 元: 350px */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 0.625rem;      /* 元: 10px */
-  border: 0.125rem solid #ccc; /* 元: 2px */
-  background-color: white;
-  border-radius: 1.25rem; /* 元: 20px */
-}
-.tweet-toptable h3 {
-  font-size: 1.125rem;    /* 元: 18px */
-  margin: 0;
-}
-.tweet-toptable img {
-  width: 90%;
-  height: 60%;
-  object-fit: cover;
-  border-radius: 0.5rem;  /* 元: 8px */
-  display: block;
-  margin: 0 auto;
-  border: 0.0625rem solid #ccc; /* 元: 1px */
-}
-.tweet-toptable p {
-  margin: 0.625rem 0 0 0; /* 元: 10px 0 0 0 */
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-}
+
 .tweet-link {
   text-decoration: none;
   color: inherit;
@@ -2399,11 +2370,14 @@ footer {
 
   .toptweets {
     width: 90%;
-
+    min-width: unset;         /* 固定幅を解除 */
   }
 
   .tweets-topcontainer {
     justify-content: center;  /* 中央寄せ */
+  }
+  .letters-toptable{
+    justify-content: center;
   }
 }
 
@@ -2420,7 +2394,7 @@ footer {
   border-radius: 0.5rem;
   box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.05);
   padding: 2rem 2rem 2rem; /* ← ここを戻す！ */
-  margin: 2rem  2rem 3rem auto ;  /* ← 上に画鋲分の余白を確保 */
+  margin: 3rem  2rem auto ;  /* ← 上に画鋲分の余白を確保 */
   box-sizing: border-box;
   overflow: visible;
   text-align: center;
@@ -2489,8 +2463,8 @@ footer {
   border: 1px solid #ccc;
   border-radius: 0.5rem;
   box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.05);
-  padding: 2rem 2rem 2rem; /* ← ここを戻す！ */
-  margin: 2rem  2rem 3rem auto ;  /* ← 上に画鋲分の余白を確保 */
+  padding: 2rem 2rem 2rem 2rem; /* ← ここを戻す！ */
+  margin: 2rem  2rem 3rem  ;  /* ← 上に画鋲分の余白を確保 */
   box-sizing: border-box;
   overflow: visible;
   text-align: center;
