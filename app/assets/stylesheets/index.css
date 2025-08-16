@@ -118,16 +118,21 @@ h1 {
 /* ========== スマホ用スタイル ========== */
 @media screen and (max-width: 1279px) {
   .menu-toggle{
-    display: flex;
-    align-items: center;      /* 縦中央 */
-    justify-content: center;  /* 横中央 */
-    height: 60px;
-    font-size: 40px;
-    line-height: 1;           /* ベースラインのズレ抑制 */
-    color: white;
-    -webkit-text-size-adjust: 100%; /* iPhoneの自動文字拡大を無効化 */
-    transform: translateY(-5px);
-  }
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:60px;
+  font-size:40px;
+  line-height:1;
+  color:#fff;
+  -webkit-text-size-adjust:100%;
+
+}
+
+/* iPhone/iPadだけ微調整（値は-2〜-4pxで微調整してOK） */
+@supports (-webkit-touch-callout: none) {
+  .menu-toggle{ transform: translateY(-5px); }
+}
 
 
 
