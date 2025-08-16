@@ -116,9 +116,11 @@ h1 {
     display: block;
     color: white;
     cursor: pointer;
-    padding: 1rem;
+    
     font-size: 2rem;
-    justify-content: center;
+    height: 56px;          /* ヘッダーの高さと揃える */
+    line-height: 56px;     /* ← この高さに文字を中央寄せ */
+    text-align: center;    /* 横方向も中央に */
   }
 
   .header-list {
