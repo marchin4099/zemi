@@ -122,6 +122,8 @@ h1 {
     align-items: center;   /* アイコンを縦中央 */
     font-size: 30px;
     height: 60px;
+    line-height: 1;                /* iOSのフォント余白を消す */
+  -webkit-text-size-adjust: 100%; /* Safariの自動拡大を防ぐ */
   }
 
   .header-list {
