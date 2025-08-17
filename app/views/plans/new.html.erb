@@ -1,23 +1,42 @@
-<h1>(自分の題名)</h1>
-<h3>新規投稿ページ</h3>
-<%= form_for @plan do |f| %>
+<h1 class="page-title">早稲田大学教育学部 社会科公共市民学専修 及川ゼミ</h1>
+<h3 class="page-subtitle">年間予定 新規登録</h3>
 
-  <div class="field">
-    <%= f.label :項目名 %>
-    <%= f.text_field :name, :size => 30 %>
-  </div>
+<section class="plan-new-container">
+  <article class="form-card">
+    <% if @plan.errors.any? %>
+      <div class="form-errors" role="alert">
+        <strong><%= @plan.errors.count %>件のエラーがあります。</strong>
+        <ul>
+          <% @plan.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-  <div class="field">
-    <%= f.label :項目名  %>
-    <%= f.text_area :about, :size => "30x2" %>
-  </div>
+    <%= form_for @plan, html: { class: "plan-form" } do |f| %>
+      <div class="form-grid">
+        <div class="form-field">
+          <%= f.label :name, "項目名", class: "form-label" %>
+          <%= f.text_field :name, class: "input-text", placeholder: "例）春学期キックオフ／合宿" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :image %>
-    <%= f.file_field :image %>
-    </div>
+        <div class="form-field">
+          <%= f.label :about, "内容（詳細）", class: "form-label" %>
+          <%= f.text_area :about, class: "input-textarea", rows: 6, placeholder: "日程の補足・担当・持ち物など" %>
+        </div>
 
-<%= f.submit "投稿する" %>
-<% end %>
+        <div class="form-field">
+          <%= f.label :image, "画像", class: "form-label" %>
+          <%= f.file_field :image, class: "input-file" %>
+          <p class="help-text">※ JPG/PNG 推奨</p>
+        </div>
+      </div>
 
-<%= link_to "一覧に戻る", plans_path %>
+      <div class="form-actions">
+        <%= f.submit "投稿する", class: "btn btn-primary" %>
+        <%= link_to "一覧に戻る", plans_path, class: "btn btn-ghost" %>
+      </div>
+    <% end %>
+  </article>
+</section>

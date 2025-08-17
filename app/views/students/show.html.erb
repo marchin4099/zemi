@@ -14,7 +14,8 @@
         <% if @student.image.attached? %>
             <%= image_tag @student.image, size: '300x300' %>
         <% end %>
-        <p><%= @student.about %></p>
+        <div class="student-about preline"><%= h(@student.about) %></div>
+
       </div>
   </div>
 </div>

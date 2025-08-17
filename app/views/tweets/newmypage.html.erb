@@ -1,8 +1,15 @@
-    <ul>
+    <nav class="auth-nav" aria-label="アカウント">
+  <ul class="auth-list">
     <% if user_signed_in? %>
-     <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+      <li>
+        <%= button_to "ログアウト", destroy_user_session_path,
+              method: :delete,
+              class: "btn btn-ghost",
+              form: { class: "logout-form" } %>
+      </li>
     <% else %>
-     <li><%= link_to "新規登録", new_user_registration_path %></li>
-     <li><%= link_to "ログイン", new_user_session_path %></li>
+      <li><%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary" %></li>
+      <li><%= link_to "ログイン", new_user_session_path, class: "btn btn-ghost" %></li>
     <% end %>
-   </ul>
+  </ul>
+</nav>

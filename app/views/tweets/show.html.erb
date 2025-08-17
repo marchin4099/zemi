@@ -4,22 +4,30 @@
 
 <div class="section">
   <div class="showcustom-fusen">
-   <div class="wood-thumbtack">
-           <div class="wood-head"></div>
-            <div class="wood-head-bottom"></div>
-              <div class="woodpin-needle"></div>
-        </div>
+    <div class="wood-thumbtack">
+      <div class="wood-head"></div>
+      <div class="wood-head-bottom"></div>
+      <div class="woodpin-needle"></div>
+    </div>
+
     <div class="tweet-show">
       <h1><%= @tweet.name %></h1>
       <% if @tweet.image.attached? %>
         <%= image_tag @tweet.image, size: '300x300' %>
       <% end %>
-      <p><%= @tweet.about %></p>
-      <p><%= Date.parse(@tweet.day).strftime("%Y年%-m月%-d日") %></p>
-      <p><%= @tweet.place %></p>
+      <!-- simple_format をやめて、プレーンテキストを出す -->
+        <div class="tweet-about preline"><%= h(@tweet.about) %></div>
+
+    </div>
+
+    <!-- 枠の“中の下”に配置されるエリア -->
+    <div class="tweet-meta">
+      <h3>日時：<%= Date.parse(@tweet.day).strftime("%Y年%-m月%-d日") %></h3>
+      <h3>場所：<%= @tweet.place %></h3>
     </div>
   </div>
 </div>
+
 
 <div class="back-button-wrapper">
   <%= link_to "一覧に戻る", tweets_path, class: "back-button" %>

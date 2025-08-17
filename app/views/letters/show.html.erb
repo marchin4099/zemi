@@ -8,7 +8,8 @@
     <div class="letter">
       <p><%= @letter.day.strftime("%Y年%-m月%-d日") %></p>
       <h1><%= @letter.name %></h1>
-      <p><%= @letter.about %></p>
+      <div class="letter-about preline"><%= h(@letter.about) %></div>
+
     </div>
   </div>
 </div>

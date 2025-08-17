@@ -1,20 +1,54 @@
-<h1>マイページ</h1>
-<p>名前 : <%= @user.name %></p>
-<p>メールアドレス : <%= @user.email %></p>
-<p>プロフィール : <%= @user.profile %></p>
+<section class="mypage-container">
+  <article class="profile-card">
+    <div class="avatar" aria-hidden="true"><%= @user.name.to_s.first&.upcase %></div>
 
-<% if current_user.id == @user.id %>
-  <%= link_to "マイページを編集する", edit_user_registration_path %>
-<% end %>
+    <div class="profile-content">
+      <h1 class="page-title">マイページ</h1>
 
-<%= link_to "年間予定新規投稿へ", new_plan_path %>
-<%= link_to "活動ブログ新規投稿へ", new_tweet_path %>
-<%= link_to "ゼミ生紹介新規投稿へ", new_student_path %>
-<%= link_to "お知らせ新規投稿へ", new_letter_path %>
+      <dl class="profile-list">
+        <div>
+          <dt>名前</dt>
+          <dd><%= @user.name %></dd>
+        </div>
+        <div>
+          <dt>メール</dt>
+          <dd><%= @user.email %></dd>
+        </div>
+        <div class="profile-about">
+          <dt>プロフィール</dt>
+          <dd>
+            <%# 改行保持＆余白はCSSで制御 %>
+            <%= simple_format(@user.profile, {}, wrapper_tag: "div") %>
+          </dd>
+        </div>
+      </dl>
 
-  
-<%= link_to 'お問い合わせ一覧表示', contacts_path %>
-<%= link_to 'ログアウトへ', :controller => "tweets", :action => "newmypage" %>
+      <% if current_user.id == @user.id %>
+        <div class="profile-actions">
+          <%= link_to "マイページを編集する", edit_user_registration_path, class: "btn btn-primary" %>
+          <%= link_to "ログアウトへ", { controller: "tweets", action: "newmypage" }, class: "btn btn-ghost" %>
+        </div>
+      <% end %>
+    </div>
+  </article>
+
+  <section class="action-card">
+    <h2 class="card-title">新規投稿</h2>
+    <div class="action-grid" role="group" aria-label="新規投稿">
+      <%= link_to "年間予定", new_plan_path,     class: "action-link" %>
+      <%= link_to "活動ブログ", new_tweet_path,  class: "action-link" %>
+      <%= link_to "ゼミ生紹介", new_student_path, class: "action-link" %>
+      <%= link_to "お知らせ",   new_letter_path, class: "action-link" %>
+    </div>
+  </section>
+
+  <section class="action-card">
+    <h2 class="card-title">管理</h2>
+    <div class="action-grid" role="group" aria-label="管理リンク">
+      <%= link_to "お問い合わせ一覧表示", contacts_path, class: "action-link" %>
+    </div>
+  </section>
+</section>
 
 
 
