@@ -509,6 +509,7 @@ footer {
   box-sizing: border-box;
   position: relative;
   z-index: 3; /* 背景線より上に表示 */
+  
 }
 
 .letter-link:hover {
@@ -790,7 +791,19 @@ footer {
   height: 1.5rem;       
 }
 
+.line-clamp-2{
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-clamp: 2;                 /* 対応ブラウザ用の将来互換 */
+}
 
+.letter-title{
+  margin: 0;
+  line-height: 1.4;
+  font-size: 1rem;               /* 必要なら clamp で可変に */
+}
 
 
 .letters-toptable {
@@ -874,6 +887,8 @@ footer {
   z-index: 3;
 }
 
+
+
 /* --- スマホ用調整 --- */
 @media screen and (max-width: 768px) {
   .letters-toptable {
@@ -888,7 +903,6 @@ footer {
   }
 
   .letter-link {
-     padding-left: 4rem !important; /* ← 強制的に左にスペースを作る */
      width: 80%;
      margin-left: 10%;
   }

@@ -44,7 +44,7 @@
           <% @letters.each do |letter| %>
           <%= link_to letter_path(letter), class: "letter-link" do %>
           <div class="letter">
-            <h3><%= letter.name %></h3>
+           <h3 class="letter-title line-clamp-2" title="<%= letter.name %>"><%= letter.name %></h3>
           </div>
         <% end %>
         <% end %>
