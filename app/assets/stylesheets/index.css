@@ -486,12 +486,49 @@ footer {
   background-color: #f5f5f5;
 }
 
-.letter-date,
-.letter-title {
-  font-size: 3vw;             /* PCで30〜32px、スマホでは自動で小さく */
-  color: #333;
+
+/* クリックできる本文部分（タイトル省略はここで効かせる） */
+.letter-content{
+  display:flex;
+  align-items:center;
+  flex: 1 1 auto;
+  min-width: 0;                 /* ← これが超重要 */
+  text-decoration:none;
+  color: inherit;
+  gap: 1rem;
+}
+
+/* 日付は固定幅＆折り返さない */
+.letter-date{
+  flex:none;
+  white-space:nowrap;
+  color:#6b7280;                /* var(--muted) があればそれで */
+  line-height: 1.4;
+ 
+  
+}
+
+/* タイトルは一行省略（…） */
+.letter-title{
+  min-width: 0;                 /* ← 省略に必須 */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+ 
   font-weight: bold;
 }
+
+
+@media (min-width: 1024px){
+  .letter-date{ font-size: 1.6rem;  }
+  .letter-title{ font-size: 1.5rem !important; }
+}
+
+@media (max-width: 768px){
+  .letter-date{ font-size: 0.8rem;  }
+  .letter-title{ font-size: 0.8rem !important; }
+}
+
 
 
 
@@ -510,10 +547,6 @@ footer {
   position: relative;
   z-index: 3; /* 背景線より上に表示 */
   
-}
-
-.letter-link:hover {
-  background-color: #f5f5f5;
 }
 
 
