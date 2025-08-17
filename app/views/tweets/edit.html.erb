@@ -1,23 +1,64 @@
-<%= form_for @tweet do |f| %>
-   <div class="field">
-    <%= f.label :タイトル %>
-    <%= f.text_field :name, :size => 30 %>
-    </div>
-    <div class="field">
-    <%= f.label :内容  %>
-    <%= f.text_area :about, :size => "30x2" %>
-    </div>
-    <div class="field">
-    <%= f.label :実施日  %>
-    <%= f.date_field :day, :size => "30x2"%>
-    </div>
-    <div class="field">
-    <%= f.label :場所 %>
-    <%= f.text_field :place, :size => 30 %>
-    </div>
-    <div class="field">
-    <%= f.label :image %>
-    <%= f.file_field :image %>
-    </div>
-  <%= f.submit "編集する" %>
-<% end %>
+<section class="blog-new-container">
+  <article class="form-card">
+    <% if @tweet.errors.any? %>
+      <div class="form-errors" role="alert">
+        <strong><%= @tweet.errors.count %>件のエラーがあります。</strong>
+        <ul>
+          <% @tweet.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= form_for @tweet, html: { class: "tweet-form" } do |f| %>
+      <div class="form-grid">
+        <div class="form-field <%= 'has-error' if @tweet.errors[:name].any? %>">
+          <%= f.label :name, "タイトル", class: "form-label" %>
+          <%= f.text_field :name, class: "input-text", placeholder: "例）春学期キックオフ" %>
+          <% @tweet.errors.full_messages_for(:name).each do |m| %>
+            <p class="field-error"><%= m %></p>
+          <% end %>
+        </div>
+
+        <div class="form-field <%= 'has-error' if @tweet.errors[:about].any? %>">
+          <%= f.label :about, "内容", class: "form-label" %>
+          <%= f.text_area :about, class: "input-textarea", rows: 10, placeholder: "当日の流れ・担当・感想など" %>
+          <% @tweet.errors.full_messages_for(:about).each do |m| %>
+            <p class="field-error"><%= m %></p>
+          <% end %>
+        </div>
+
+        <div class="form-field <%= 'has-error' if @tweet.errors[:day].any? %>">
+          <%= f.label :day, "実施日", class: "form-label" %>
+          <%= f.date_field :day, class: "input-text" %>
+          <% @tweet.errors.full_messages_for(:day).each do |m| %>
+            <p class="field-error"><%= m %></p>
+          <% end %>
+        </div>
+
+        <div class="form-field <%= 'has-error' if @tweet.errors[:place].any? %>">
+          <%= f.label :place, "場所", class: "form-label" %>
+          <%= f.text_field :place, class: "input-text", placeholder: "早稲田キャンパス14号館 〜" %>
+          <% @tweet.errors.full_messages_for(:place).each do |m| %>
+            <p class="field-error"><%= m %></p>
+          <% end %>
+        </div>
+
+        <div class="form-field <%= 'has-error' if @tweet.errors[:image].any? %>">
+          <%= f.label :image, "画像", class: "form-label" %>
+          <%= f.file_field :image, class: "input-file", accept: "image/*" %>
+          <p class="help-text">JPG/PNG 推奨（容量はアプリ設定に従います）</p>
+          <% @tweet.errors.full_messages_for(:image).each do |m| %>
+            <p class="field-error"><%= m %></p>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <%= f.submit "編集する", class: "btn btn-primary", data: { disable_with: "更新中…" } %>
+        <%= link_to "一覧に戻る", tweets_path, class: "btn btn-ghost" %>
+      </div>
+    <% end %>
+  </article>
+</section>

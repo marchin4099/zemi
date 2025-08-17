@@ -12,20 +12,16 @@
 
     <div class="tweet-show">
       <h1><%= @tweet.name %></h1>
+      <div class="tweet-meta">
+          <h3>日時：<%= Date.parse(@tweet.day).strftime("%Y年%-m月%-d日") %></h3>
+          <h3>場所：<%= @tweet.place %></h3>
+        </div>
       <% if @tweet.image.attached? %>
         <%= image_tag @tweet.image, size: '300x300' %>
       <% end %>
-      <!-- simple_format をやめて、プレーンテキストを出す -->
         <div class="tweet-about preline"><%= h(@tweet.about) %></div>
-
+      </div>
     </div>
-
-    <!-- 枠の“中の下”に配置されるエリア -->
-    <div class="tweet-meta">
-      <h3>日時：<%= Date.parse(@tweet.day).strftime("%Y年%-m月%-d日") %></h3>
-      <h3>場所：<%= @tweet.place %></h3>
-    </div>
-  </div>
 </div>
 
 

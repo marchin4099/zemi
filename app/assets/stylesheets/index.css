@@ -992,7 +992,7 @@ footer {
 .tweets-note h1 {
   text-align: center;
   margin-top: 2%;
-  margin-bottom: 2%;
+  margin-bottom: 2.2%;
   font-size: 3rem;
   color: #333;
   z-index: 5;
@@ -2215,9 +2215,7 @@ footer {
 }
 
 .tweet-meta {              /* ← これで“枠の中の下”へ */
-  padding-top: 40rem;
-  display: flex;
-  flex-direction: column;        
+  position: relative;       
   gap: .25rem;
 }
 
@@ -2245,10 +2243,7 @@ footer {
     margin-bottom: 1rem;
   }
 
-  .tweet-meta {              /* ← これで“枠の中の下”へ */
-  padding-top: 2rem;
-  display: flex;
-  flex-direction: column;        
+  .tweet-meta {              /* ← これで“枠の中の下”へ */       
   gap: .25rem;
 }
 }
@@ -3829,3 +3824,55 @@ body{margin:0;background:var(--bg);color:var(--ink)}
 .btn-primary:hover{ background:var(--primary-600); }
 .btn-ghost{ background:#f3f4f6; color:#111; border:1px solid #e5e7eb; }
 .btn-ghost:hover{ background:#e9ebee; }
+
+/* iOS Safari の date 入力をテキスト入力と同じ高さ・枠に揃える */
+.input-text[type="date"]{
+  -webkit-appearance: none;  /* iOSの独自見た目を外す */
+  appearance: none;
+  line-height: 1.2;          /* ベースラインのズレを抑える */
+  padding-block: .55em;      /* 縦パディングはやや薄めに */
+  padding-inline: .9em 2.2rem; /* 右にアイコン分の余白を確保 */
+  min-height: 44px;          /* タップ領域を担保 */
+  background-color: #fff;
+  border: 1px solid var(--line);
+  border-radius: .75rem;
+  box-sizing: border-box;
+}
+
+/* 値の縦位置を安定化（iOS Safari） */
+.input-text[type="date"]::-webkit-date-and-time-value{
+  min-height: 1.2em;
+}
+
+/* 余計なボタン類は非表示（環境による） */
+.input-text[type="date"]::-webkit-inner-spin-button,
+.input-text[type="date"]::-webkit-clear-button{
+  display: none;
+}
+
+/* カレンダーアイコンの当たり判定と余白を調整 */
+.input-text[type="date"]::-webkit-calendar-picker-indicator{
+  padding: .3rem;
+  margin-right: .2rem;
+}
+
+.input-text[type="date"]{
+  -webkit-appearance: none;
+  appearance: none;
+  line-height: 1.2;
+  padding-block: .55em;
+  padding-inline: .9em 2.2rem; /* 右のカレンダー分の余白 */
+  min-height: 44px;
+  background-color: #fff;
+  border: 1px solid var(--line);
+  border-radius: .75rem;
+  box-sizing: border-box;
+}
+.input-text[type="date"]::-webkit-date-and-time-value{ min-height: 1.2em; }
+.input-text[type="date"]::-webkit-inner-spin-button,
+.input-text[type="date"]::-webkit-clear-button{ display: none; }
+.input-text[type="date"]::-webkit-calendar-picker-indicator{ padding:.3rem; margin-right:.2rem; }
+
+/* それでも合わなければ高さ固定（どちらか片方） */
+/* .input-text[type="date"]{ height:44px; padding-block:.35em; } */
+/* .input-text[type="date"]{ block-size:44px; padding-block:.35em; } */

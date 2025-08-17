@@ -1,15 +1,47 @@
-<%= form_for @letter do |f| %>
-  <div class="field">
-    <%= f.label :日時 %>
-    <%= f.date_field :day, :size => 30 %>
-    </div>
-   <div class="field">
-    <%= f.label :名前 %>
-    <%= f.text_field :name, :size => 30 %>
-    </div>
-    <div class="field">
-    <%= f.label :項目名  %>
-    <%= f.text_area :about, :size => "30x2" %>
-    </div>
-  <%= f.submit "編集する" %>
-<% end %>
+<section class="letter-new-container">
+  <article class="form-card">
+    <% if @letter.errors.any? %>
+      <div class="form-errors" role="alert">
+        <strong><%= @letter.errors.count %>件のエラーがあります。</strong>
+        <ul>
+          <% @letter.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= form_for @letter, html: { class: "letter-form" } do |f| %>
+      <div class="form-grid">
+        <div class="form-field <%= 'has-error' if @letter.errors[:day].any? %>">
+          <%= f.label :day, "日時", class: "form-label" %>
+          <%= f.date_field :day, class: "input-text" %>
+          <% @letter.errors.full_messages_for(:day).each do |m| %>
+            <p class="field-error"><%= m %></p>
+          <% end %>
+        </div>
+
+        <div class="form-field <%= 'has-error' if @letter.errors[:name].any? %>">
+          <%= f.label :name, "名前", class: "form-label" %>
+          <%= f.text_field :name, class: "input-text", placeholder: "例）合宿の日程について" %>
+          <% @letter.errors.full_messages_for(:name).each do |m| %>
+            <p class="field-error"><%= m %></p>
+          <% end %>
+        </div>
+
+        <div class="form-field <%= 'has-error' if @letter.errors[:about].any? %>">
+          <%= f.label :about, "内容（詳細）", class: "form-label" %>
+          <%= f.text_area :about, class: "input-textarea", rows: 8, placeholder: "開催日時・場所・連絡事項など" %>
+          <% @letter.errors.full_messages_for(:about).each do |m| %>
+            <p class="field-error"><%= m %></p>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <%= f.submit "編集する", class: "btn btn-primary", data: { disable_with: "更新中…" } %>
+        <%= link_to "一覧に戻る", letters_path, class: "btn btn-ghost" %>
+      </div>
+    <% end %>
+  </article>
+</section>

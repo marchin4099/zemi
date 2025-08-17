@@ -1,16 +1,49 @@
-<%= form_for @plan do |f| %>
-   <div class="field">
-    <%= f.label :名前 %>
-    <%= f.text_field :name, :size => 30 %>
-    </div>
-    <div class="field">
-    <%= f.label :項目名  %>
-    <%= f.text_area :about, :size => "30x2" %>
-    </div>
-    <div class="field">
-    <%= f.label :image %>
-    <%= f.file_field :image %>
-    </div>
-  <%= f.submit "編集する" %>
-<% end %>
+<section class="plan-new-container">
+  <article class="form-card">
+    <% if @plan.errors.any? %>
+      <div class="form-errors" role="alert">
+        <strong><%= @plan.errors.count %>件のエラーがあります。</strong>
+        <ul>
+          <% @plan.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= form_for @plan, html: { class: "plan-form" } do |f| %>
+      <div class="form-grid">
+        <div class="form-field <%= 'has-error' if @plan.errors[:name].any? %>">
+          <%= f.label :name, "名前", class: "form-label" %>
+          <%= f.text_field :name, class: "input-text", placeholder: "例）春学期キックオフ／合宿" %>
+          <% @plan.errors.full_messages_for(:name).each do |m| %>
+            <p class="field-error"><%= m %></p>
+          <% end %>
+        </div>
+
+        <div class="form-field <%= 'has-error' if @plan.errors[:about].any? %>">
+          <%= f.label :about, "内容（詳細）", class: "form-label" %>
+          <%= f.text_area :about, class: "input-textarea", rows: 8, placeholder: "日程の補足・担当・持ち物など" %>
+          <% @plan.errors.full_messages_for(:about).each do |m| %>
+            <p class="field-error"><%= m %></p>
+          <% end %>
+        </div>
+
+        <div class="form-field <%= 'has-error' if @plan.errors[:image].any? %>">
+          <%= f.label :image, "画像", class: "form-label" %>
+          <%= f.file_field :image, class: "input-file", accept: "image/*" %>
+          <p class="help-text">JPG/PNG 推奨（容量はアプリ設定に従います）</p>
+          <% @plan.errors.full_messages_for(:image).each do |m| %>
+            <p class="field-error"><%= m %></p>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <%= f.submit "編集する", class: "btn btn-primary", data: { disable_with: "更新中…" } %>
+        <%= link_to "一覧に戻る", plans_path, class: "btn btn-ghost" %>
+      </div>
+    <% end %>
+  </article>
+</section>
 

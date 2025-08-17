@@ -33,7 +33,7 @@
 
         <% if user_signed_in? && current_user.id == t.user_id %>
           <div class="plan-actions">
-            <%= link_to "編集する", edit_student_path(t.id), class: "plan-edit" %>
+            <%= link_to "編集する", edit_plan_path(t.id), class: "plan-edit" %>
             <%= button_to "削除する", plan_path(t.id), method: :delete, class: "plan-delete" %>
           </div>
         <% end %>
