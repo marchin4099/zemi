@@ -832,7 +832,7 @@ footer {
   line-clamp: 2;                 /* 対応ブラウザ用の将来互換 */
 }
 
-.letter-title{
+.letter-toptitle{
   margin: 0;
   line-height: 1.4;
   font-size: 1rem;               /* 必要なら clamp で可変に */
