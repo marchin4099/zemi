@@ -1,3 +1,5 @@
 # Allow all crawlers to access the entire site
 User-agent: *
 Allow: /
+
+Sitemap: https://oikawaseminar.onrender.com/sitemap.xml
