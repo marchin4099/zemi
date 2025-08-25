@@ -530,11 +530,11 @@ footer {
 }
 
 @media (min-width: 1024px){
-  .topletter-date{ font-size: 1rem;  }
+  .topletter-date{ font-size: 1.6rem; color:#6b7280;    }
 }
 
 @media (max-width: 768px){
-  .topletter-date{ font-size: 0.8rem;  }
+  .topletter-date{ font-size: 0.8rem; color:#6b7280;    }
 }
 
 
