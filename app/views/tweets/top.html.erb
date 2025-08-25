@@ -42,8 +42,11 @@
           <% @letters.each do |letter| %>
           <%= link_to letter_path(letter), class: "letter-link" do %>
           <div class="letter">
-           <h3 class="letter-toptitle line-clamp-2" title="<%= letter.name %>"><%= letter.name %></h3>
+          <p class="topletter-date"><%= letter.created_at.strftime("%Y年%-m月%-d日") %></p>
+          <h3 class="letter-toptitle line-clamp-2" title="<%= letter.name %>"><%= letter.name %></h3>
           </div>
+
+
         <% end %>
         <% end %>
         <% else %>

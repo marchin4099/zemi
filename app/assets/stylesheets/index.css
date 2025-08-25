@@ -529,7 +529,13 @@ footer {
   .letter-title{ font-size: 0.8rem !important; }
 }
 
+@media (min-width: 1024px){
+  .topletter-date{ font-size: 1rem;  }
+}
 
+@media (max-width: 768px){
+  .topletter-date{ font-size: 0.8rem;  }
+}
 
 
 /* ✅ 投稿ごとの行スタイル */
