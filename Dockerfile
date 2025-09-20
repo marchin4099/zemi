@@ -1,70 +1,73 @@
-# syntax = docker/dockerfile:1
+# syntax=docker/dockerfile:1
 
-# Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
-ARG RUBY_VERSION=3.2.8
-FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
+########################
+# Builder
+########################
+FROM ruby:3.2.0-slim AS builder
 
-# Rails app lives here
+ENV RAILS_ENV=production \
+    RACK_ENV=production \
+    BUNDLE_WITHOUT="development:test" \
+    BUNDLE_PATH=/usr/local/bundle
+
+# OS 依存
+RUN apt-get update -qq && \
+    apt-get install -y --no-install-recommends \
+      build-essential libpq-dev git curl \
+      nodejs npm \
+      imagemagick \
+    && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /rails
 
-# Set production environment
-ENV RAILS_ENV="production" \
-    BUNDLE_DEPLOYMENT="1" \
-    BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development"
+# bin/ の権限と改行コード（CRLF）対策
+COPY bin/ ./bin/
+RUN sed -i 's/\r$//' bin/* && chmod +x bin/*
 
-
-# Throw-away build stage to reduce size of final image
-FROM base as build
-
-# Install packages needed to build gems
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential git pkg-config libpq-dev libyaml-dev && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
-
-# Install application gems
+# Gem 先に入れる
 COPY Gemfile Gemfile.lock ./
-RUN bundle install && \
-    rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
-    bundle exec bootsnap precompile --gemfile
+RUN bundle lock --add-platform x86_64-linux || true && \
+    bundle install --jobs=4 --retry=3
 
-# Copy application code
+# Node 依存（あれば）
+COPY package.json yarn.lock* package-lock.json* ./
+RUN if [ -f package.json ]; then \
+      if [ -f yarn.lock ]; then npm install -g yarn && yarn install --frozen-lockfile; \
+      elif [ -f package-lock.json ]; then npm ci; \
+      fi; \
+    fi
+
+# アプリ本体
 COPY . .
 
-# Precompile bootsnap code for faster boot times
-RUN bundle exec bootsnap precompile app/ lib/
+# bootsnap は任意（失敗しても無視）
+RUN bundle exec bootsnap precompile app/ lib/ || true
 
-# Adjust binfiles to be executable on Linux
-RUN chmod +x bin/* && \
-    sed -i "s/\r$//g" bin/* && \
-    sed -i 's/ruby\.exe$/ruby/' bin/*
+# assets:precompile（SECRET_KEY_BASE ダミーでOK）
+RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
 
-# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+########################
+# Final
+########################
+FROM ruby:3.2.0-slim
 
+ENV RAILS_ENV=production \
+    RACK_ENV=production
 
-# Final stage for app image
-FROM base
-
-# Install base packages
+# 本番に必要なランタイムだけ
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libjemalloc2 libvips sqlite3 libpq5 && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+    apt-get install -y --no-install-recommends \
+      libpq5 imagemagick \
+    && rm -rf /var/lib/apt/lists/*
 
-# Copy built artifacts: gems, application
-COPY --from=build /usr/local/bundle /usr/local/bundle
-COPY --from=build /rails /rails
+WORKDIR /rails
 
-# Run and own only the runtime files as a non-root user for security
-RUN useradd rails --create-home --shell /bin/bash && \
-    chown -R rails:rails db log storage tmp
-USER rails:rails
+# bundler & アプリをコピー
+COPY --from=builder /usr/local/bundle /usr/local/bundle
+COPY --from=builder /rails /rails
 
-# Entrypoint prepares the database.
-ENTRYPOINT ["/rails/bin/docker-entrypoint"]
-
-# Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
-CMD ["./bin/rails", "server"]
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
+
 
 
