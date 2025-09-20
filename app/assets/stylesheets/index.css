@@ -952,9 +952,9 @@ footer {
 
   .section-toplines h1 {
     font-size: 1.5rem;
-    margin-top: 3rem;
+    margin-top: 1rem;
   }
-
+  
   .topletter-image {
     width: 30%;
     max-width: none;
@@ -1390,7 +1390,7 @@ footer {
 
 .teacher-image,
 .teacheraboutfusen {
-  width: 40vw;
+  width: 30vw;
   height: auto;
   display: block;
 }
@@ -1693,7 +1693,7 @@ footer {
 
   .teacher-image,
   .teacheraboutfusen {
-    width: 90vw;
+    width: 80vw;
   }
 
   
@@ -1982,17 +1982,19 @@ footer {
 
 
 
-.sticky-noteblue {
-  position: relative;
-  width: 35rem;
-  height: auto;
-  min-height: 35rem; /* ← 高さの下限を設定 */
-  background-color: #b3e5f2; /* 付箋の水色 */
-  margin: 2rem auto;
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
-  border-radius: 0.2rem;
-  padding: 1rem;
 
+
+.sticky-noteblue{
+  position: relative;
+  width: min(30rem, 92vw); /* 画面狭いときは縮む */
+  min-height: 30rem;
+  background-color: #b3e5f2;
+  margin: 2rem auto;       /* ← 横中央 */
+  display: block;          /* 念のため */
+  box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,.2);
+  border-radius: .2rem;
+  padding: 1rem;
+  margin-top: 3.5rem;
 }
 
 .tapeblue {
@@ -2058,9 +2060,9 @@ footer {
 
 .sticky-notegreen {
   position: relative;
-  width: 35rem;
+  width: 30rem;
   height: auto;
-  min-height: 35rem; /* ← 高さの下限を設定 */
+  min-height: 30rem; /* ← 高さの下限を設定 */
   background-color: #d5ef74; /* 黄緑 */
   margin: 2rem auto;
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
@@ -2097,15 +2099,19 @@ footer {
   }
 }
 
-.sticky-noteorange {
+
+
+.sticky-noteorange{
   position: relative;
-  width: 35rem;
-  height: auto;
-  min-height: 35rem; /* ← 高さの下限を設定 */
-  background-color: #ffd878; 
-  margin: 2rem auto;
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
-  border-radius: 0.2rem;
+  width: min(30rem, 92vw); /* 画面狭いときは縮む */
+  min-height: 30rem;
+  background-color: #ffd878;
+  margin: 2rem auto;       /* ← 横中央 */
+  display: block;          /* 念のため */
+  box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,.2);
+  border-radius: .2rem;
+  padding: 1rem;
+  margin-top: 3.5rem;
 }
 
 .tapeorange {
@@ -2204,7 +2210,6 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center; /* ← ここを flex-start → center に変更！ */
-  gap: 2rem;
   flex-wrap: nowrap;
 }
 
@@ -2213,10 +2218,6 @@ footer {
   .teacher-about-flex {
     flex-direction: column;
     align-items: center;
-  }
-
-  .teacher-image {
-    width: 80vw;
   }
 
   .teacher-fusen-wrapper {
@@ -2434,8 +2435,8 @@ footer {
   .toprecentnews{
     width: 90%;               /* スマホ画面に合わせて幅調整 */
     min-width: unset;         /* 固定幅を解除 */
+    
   }
-
   .toptweets {
     width: 90%;
     min-width: unset;         /* 固定幅を解除 */
@@ -3304,6 +3305,10 @@ footer {
   text-align: center;
 }
 
+.contactform h2{
+  font-size: 0.9rem;
+}
+
 .back-button-wrapper {
   text-align: center; /* 横方向中央寄せ */
   margin: 2rem 0;     /* 上下の余白 */
@@ -3929,3 +3934,453 @@ body{margin:0;background:var(--bg);color:var(--ink)}
 /* それでも合わなければ高さ固定（どちらか片方） */
 /* .input-text[type="date"]{ height:44px; padding-block:.35em; } */
 /* .input-text[type="date"]{ block-size:44px; padding-block:.35em; } */
+
+.qa-block {
+  margin-top: 1rem;
+  padding: 1rem;
+  max-width: 1000px; 
+  margin: 0 auto ;
+}
+
+.qa-question h2 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.qa-answer p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+  margin: 0;
+  padding-left: 1rem;
+  border-left: 3px solid orange; /* 回答部分にワンポイント */
+}
+
+
+
+.activities__head {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.activities__eyebrow {
+  font-size: 0.8rem;
+  color: #666;
+  letter-spacing: 0.15em;
+}
+
+.activities__title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+
+/* ====== リスト ====== */
+.activities__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ====== 各活動カード ====== */
+.activity {
+  display: grid;
+  grid-template-columns: 280px 1fr; /* 写真左・説明右 */
+  gap: 1.5rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  min-height: 240px;  /* ★枠の高さを固定 */
+  box-sizing: border-box;
+}
+
+
+
+/* 枠サイズを固定して、どんな画像でも同じ見た目に */
+:root{
+  /* 好みで調整（デスクトップ / モバイル） */
+  --media-h-desktop: 200px;
+  --media-h-mobile:  220px;
+}
+
+.activity__media{
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 0.6rem;
+  overflow: hidden;
+
+  /* ★ ここで高さを固定 */
+  height: var(--media-h-desktop);
+}
+
+/* 画像は枠いっぱいに、中央トリミング */
+.activity__media img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  /* 角も丸く見せたいなら継承でもOK */
+  border-radius: inherit;
+}
+
+/* スマホ・タブレットのときの高さ（必要なら調整） */
+@media (max-width: 768px){
+  .activity{
+    grid-template-columns: 1fr;   /* 画像→本文の縦並び（既に入れているなら不要） */
+    min-height: auto;
+  }
+  .activity__media{
+    height: var(--media-h-mobile); /* ★ モバイル用固定高さ */
+  }
+}
+
+
+.activity__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.activity__heading {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.activity__text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+/* ====== スマホ対応 ====== */
+@media (max-width: 768px) {
+  .activity {
+    grid-template-columns: 1fr; /* スマホは縦並び */
+    min-height: auto;          /* 高さ制限解除 */
+  }
+  .activity__media {
+    margin-bottom: 1rem;
+  }
+}
+
+/* ====== 情報カード用の派生（授業頻度） ====== */
+.activity--info {
+  /* 既存の activity と同じ枠・レイアウトを踏襲 */
+  /* 固定感を少し強めるため高さを揃えたい場合はここで指定 */
+  min-height: 220px; /* 既存より少し低めでもOK。全カード統一なら揃えてください */
+}
+
+/* アイコンは少し小ぶりにして“情報感”を演出 */
+.activity--info .activity__media {
+  background: #f7f9ff;           /* うっすら色を変えて差別化（白系で一貫性） */
+  border: 1px solid #e3e8ff;
+}
+
+.activity--info .activity__media img {
+  width: 70%;     /* 通常カードより小さめ */
+  max-width: 140px;
+}
+
+/* 注意書き（※）のスタイル：本文より一段落とし、可読性を上げる */
+.activity__note {
+  margin-top: 0.6rem;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: #555;
+  padding-left: 0.9rem;
+  border-left: 3px solid #dcdcdc;  /* 目線誘導のガイド */
+}
+
+
+/* 授業頻度セクション（本文だけのシンプル版） */
+#frequency .activities__content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: left;
+}
+
+#frequency .activities__text {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+#frequency .activities__note {
+  margin-top: 0.8rem;
+  font-size: 0.95rem;
+  color: #555;
+  padding-left: 0.9rem;
+  border-left: 3px solid #dcdcdc;
+}
+
+
+/* ====== 及川ゼミとは ====== */
+.about-list {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.about-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.2rem;
+}
+
+.about-item dt {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #222;
+  margin-bottom: 0.3rem;
+  border-left: 4px solid #dcdcdc;
+  padding-left: 0.6rem;
+}
+
+.about-item dd {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #333;
+  margin: 0;
+}
+
+/* PCでは横並びにしてもOK */
+@media (min-width: 768px) {
+  .about-item {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .about-item dt {
+    min-width: 7rem;
+    margin-bottom: 0;
+    font-size: 1.5rem;
+  }
+  .about-item dd {
+    margin-left: 1rem;
+    font-size: 1.5rem;
+  }
+}
+
+
+
+/* ====== カリキュラム（枠付き） ====== */
+.curriculum__frame {
+  max-width: 1000px;          /* ページ中央に収める幅 */
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.curriculum__media {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 1rem;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.curriculum__img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0.5rem;
+}
+
+/* ========= タイトルバー ========= */
+:root{
+  /* 好みで色や厚みを調整 */
+  --bar-color: #CDA209;        /* バーの地色（スクショのマスタード系） */
+  --bar-text:  #ffffff;        /* 文字色 */
+  --bar-pad-y: 0.9rem;         /* バーの上下余白 */
+  --bar-pad-x: 1.2rem;         /* バーの左右余白 */
+  --bar-line-gap: 6px;         /* バー端から白ラインまでの距離 */
+  --bar-line-thin: 2px;        /* 白ラインの太さ */
+  --bar-edge-hair: 1px;        /* 外側のヘアライン(淡い) */
+  --bar-max: 1100px;           /* 最大幅（お好みで）*/
+}
+
+.bar-title {
+  width: 100%;
+  max-width: 1100px;       /* 好みで最大幅を指定 */
+  margin: 0 auto 1.5rem;
+  background: #CDA209;     /* 帯の色 */
+  position: relative;
+  padding: 1rem 1.5rem;    /* 基本余白（上下1rem / 左右1.5rem） */
+  box-sizing: border-box;
+  border-top: 1px solid rgba(205,162,9,0.8);
+  border-bottom: 1px solid rgba(205,162,9,0.8);
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* 上下の白ライン */
+.bar-title::before,
+.bar-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+}
+.bar-title::before { top: 0; }
+.bar-title::after  { bottom: 0; }
+
+.bar-title__text {
+  color: #fff;
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  font-weight: 700;
+  margin: 0;
+}
+
+/* ===== レスポンシブ調整 ===== */
+/* タブレット以下のときは左右に少し空白を残す */
+/* タブレット以下で左右に均等余白を確保 */
+@media (max-width: 1024px) {
+  .bar-title{
+    width: auto;                 /* ← 100%をやめる */
+    margin: 1.5rem 0.5rem 1.5rem;       /* ← 左右1remずつ空ける */
+    border-radius: .4rem;
+  }
+}
+
+/* ===== メッセージ（吹き出しカード） ===== */
+.message-section{
+  padding: 0 0 1.5rem;
+}
+
+/* 本体：中央寄せ・枠入り・読みやすい行間 */
+.message-bubble{
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: clamp(1rem, 2.8vw, 1.5rem) clamp(1rem, 3vw, 1.75rem);
+  background: #fff;
+  border: 1px solid #e4e4e4;
+  border-radius: 1rem;
+  box-shadow: 0 4px 14px rgba(0,0,0,.08);
+  line-height: 1.9;
+  color: #333;
+  box-sizing: border-box;
+}
+
+/* 薄い引用マークの飾り（雰囲気だけ／不要なら削除OK） */
+.message-bubble::before{
+  content: "“";
+  position: absolute;
+  top: .2rem;
+  left: .8rem;
+  font-size: 3rem;
+  line-height: 1;
+  color: rgba(205,162,9,.18); /* #CDA209系を極薄に */
+  font-family: Georgia, "Times New Roman", serif;
+  pointer-events: none;
+}
+
+/* 吹き出しの“しっぽ” */
+.message-bubble::after{
+  content: "";
+  position: absolute;
+  bottom: -14px;          /* 本体の外に少し出す */
+  left: 2.5rem;           /* しっぽの位置（左寄り） */
+  width: 26px;
+  height: 26px;
+  background:
+    linear-gradient(135deg, transparent 50%, #fff 0) no-repeat; /* 三角の白面 */
+  transform: rotate(45deg);
+  border-right: 1px solid #e4e4e4;
+  border-bottom: 1px solid #e4e4e4;
+  box-shadow: 4px 4px 10px rgba(0,0,0,.05);
+}
+
+/* 段落の余白調整（最初のpだけ入る想定） */
+.message-bubble p{
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+/* タブレット/スマホ：左右に少し余白を作る（過去のbar-titleと同じ思想） */
+@media (max-width: 1024px){
+  .message-bubble{
+    width: auto;                /* 親幅100%をやめて余白を効かせる */
+    margin: 0 1rem;             /* 左右1remの余白 */
+  }
+  .message-bubble p{
+  margin: 0;
+  font-size: 1rem;
+}
+}
+/* もっと余白を広げたい場合は 1.5rem や clamp を使って調整 */
+
+/* 可変ガター（端の余白） */
+:root{
+  --bubble-gutter: clamp(12px, 3.5vw, 28px);
+}
+
+/* 既存 */
+.minmessage-bubble{
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto 3rem; /* ← 中央寄せ + 下余白 */
+  padding: clamp(1rem, 2.8vw, 1.5rem) clamp(1rem, 3vw, 1.75rem);
+  background: #fff;
+  border: 1px solid #e4e4e4;
+  border-radius: 1rem;
+  box-shadow: 0 4px 14px rgba(0,0,0,.08);
+  line-height: 1.9;
+  color: #333;
+  box-sizing: border-box;
+}
+
+/* iPad（～1024px）では左右に少しガターを追加 */
+@media (max-width: 1024px){
+  .minmessage-bubble{
+    margin-left: var(--bubble-gutter);
+    margin-right: var(--bubble-gutter);
+  }
+}
+
+/* スマホ（～600px）はやや広めに */
+@media (max-width: 600px){
+  .minmessage-bubble{
+    margin-left: clamp(14px, 5vw, 24px);
+    margin-right: clamp(14px, 5vw, 24px);
+  }
+  /* （任意）しっぽ位置も少し内側に寄せるなら */
+  .minmessage-bubble::after{ left: 1.6rem; }
+}
+
+/* ノッチ端末の安全領域（あれば優先） */
+@supports (margin: max(0px)){
+  @media (max-width: 1024px){
+    .minmessage-bubble{
+      margin-left: max(var(--bubble-gutter), env(safe-area-inset-left));
+      margin-right: max(var(--bubble-gutter), env(safe-area-inset-right));
+    }
+  }
+}
+
+/* 飾り・しっぽ・本文はそのまま */
+.minmessage-bubble::before{ /* 省略（あなたの既存のまま） */ }
+.minmessage-bubble::after{
+  content: "";
+  position: absolute;
+  bottom: -14px;
+  left: 2.5rem; /* ←スマホで上書きしてる */
+  width: 26px; height: 26px;
+  background: linear-gradient(135deg, transparent 50%, #fff 0) no-repeat;
+  transform: rotate(45deg);
+  border-right: 1px solid #e4e4e4;
+  border-bottom: 1px solid #e4e4e4;
+  box-shadow: 4px 4px 10px rgba(0,0,0,.05);
+}
+.minmessage-bubble p{ margin: 0; font-size: 1.5rem; }
