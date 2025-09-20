@@ -53,6 +53,17 @@
 
       </nav>
     </header>
+    <nav class="header-nav">
+      <%= link_to 'トップページ', controller: "tweets", action: "top" %>
+      <%= link_to 'ゼミ概要', controller: "tweets", action: "outline" %>
+      <%= link_to 'Q&A', controller: "tweets", action: "question" %>
+      <%= link_to '活動予定', controller: "plans", action: "index" %>
+      <%= link_to '活動ブログ', controller: "tweets", action: "index" %>
+      <%= link_to '教員紹介', controller: "tweets", action: "teacher" %>
+      <%= link_to 'ゼミ生紹介', controller: "students", action: "index" %>
+      <%= link_to 'お知らせ', controller: "letters", action: "index" %>
+      <%= link_to 'お問い合わせ', controller: "contacts", action: "new" %>
+    </nav>
 
     <main>
       <%= yield %>

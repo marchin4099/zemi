@@ -4384,3 +4384,29 @@ body{margin:0;background:var(--bg);color:var(--ink)}
   box-shadow: 4px 4px 10px rgba(0,0,0,.05);
 }
 .minmessage-bubble p{ margin: 0; font-size: 1.5rem; }
+
+/* デフォルト（PC）では非表示 */
+.header-nav {
+  display: none;
+}
+
+
+@media (max-width: 1440px) {
+  .header-nav {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    background: #003366;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .header-nav a {
+    flex: 0 0 auto;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 0.7rem;
+  }
+}
