@@ -67,5 +67,5 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 EXPOSE 3000
 CMD ["./bin/rails", "server"]
 
-apt-get install --no-install-recommends -y imagemagick
+
 
