@@ -1,73 +1,70 @@
 # syntax = docker/dockerfile:1
 
-# Ruby version must match .ruby-version / Gemfile
+# Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
 ARG RUBY_VERSION=3.2.8
-FROM registry.docker.com/library/ruby:${RUBY_VERSION}-slim AS base
+FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
 
-# App root
+# Rails app lives here
 WORKDIR /rails
 
-# Production bundler/env
-ENV RAILS_ENV=production \
-    RAILS_SERVE_STATIC_FILES=true \
-    BUNDLE_DEPLOYMENT=1 \
-    BUNDLE_PATH=/usr/local/bundle \
-    BUNDLE_WITHOUT="development test"
+# Set production environment
+ENV RAILS_ENV="production" \
+    BUNDLE_DEPLOYMENT="1" \
+    BUNDLE_PATH="/usr/local/bundle" \
+    BUNDLE_WITHOUT="development"
 
-# =========================
-# Build stage
-# =========================
-FROM base AS build
 
-# System deps for building native gems
+# Throw-away build stage to reduce size of final image
+FROM base as build
+
+# Install packages needed to build gems
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y \
-      build-essential git pkg-config libpq-dev libyaml-dev \
-    && rm -rf /var/lib/apt/lists /var/cache/apt/archives
+    apt-get install --no-install-recommends -y build-essential git pkg-config libpq-dev libyaml-dev && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
-# Install gems with cache efficiency
+# Install application gems
 COPY Gemfile Gemfile.lock ./
-# In case lockfile lacks linux platform (no-op if already present)
-RUN bundle lock --add-platform x86_64-linux || true
 RUN bundle install && \
-    rm -rf ~/.bundle "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git
+    rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
+    bundle exec bootsnap precompile --gemfile
 
-# App code
+# Copy application code
 COPY . .
 
-# Ensure binstubs/entrypoint are executable & LF line endings
-RUN chmod +x bin/* || true && sed -i 's/\r$//' bin/* || true
+# Precompile bootsnap code for faster boot times
+RUN bundle exec bootsnap precompile app/ lib/
 
-# (Optional) bootsnap precompile; don't fail the build if it errors
-RUN bundle exec bootsnap precompile app/ lib/ || true
+# Adjust binfiles to be executable on Linux
+RUN chmod +x bin/* && \
+    sed -i "s/\r$//g" bin/* && \
+    sed -i 's/ruby\.exe$/ruby/' bin/*
 
-# Precompile assets without master key (OK if credentials not needed at compile)
-RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
+# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
+RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
-# =========================
-# Final runtime image
-# =========================
-FROM base AS app
 
-# Runtime deps (pg client & image processing)
+# Final stage for app image
+FROM base
+
+# Install base packages
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y \
-      curl libjemalloc2 libpq5 imagemagick \
-    && rm -rf /var/lib/apt/lists /var/cache/apt/archives
+    apt-get install --no-install-recommends -y curl libjemalloc2 libvips sqlite3 libpq5 && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
-# Bring in gems and app
+# Copy built artifacts: gems, application
 COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /rails /rails
 
-# Non-root user & ownership
+# Run and own only the runtime files as a non-root user for security
 RUN useradd rails --create-home --shell /bin/bash && \
     chown -R rails:rails db log storage tmp
 USER rails:rails
 
-# Rails container entrypoint (db prepare, etc.)
+# Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
-# Web
+# Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
-# Start app (Puma via config/puma.rb があればこちらでもOK)
-CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
+CMD ["./bin/rails", "server"]
+
+
