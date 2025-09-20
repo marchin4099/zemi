@@ -1,66 +1,73 @@
 # syntax = docker/dockerfile:1
 
-# Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
+# Ruby version must match .ruby-version / Gemfile
 ARG RUBY_VERSION=3.2.8
 FROM registry.docker.com/library/ruby:${RUBY_VERSION}-slim AS base
 
-# Rails app lives here
+# App root
 WORKDIR /rails
 
-# Set production environment
-ENV RAILS_ENV="production" \
-    BUNDLE_DEPLOYMENT="1" \
-    BUNDLE_PATH="/usr/local/bundle" \
+# Production bundler/env
+ENV RAILS_ENV=production \
+    RAILS_SERVE_STATIC_FILES=true \
+    BUNDLE_DEPLOYMENT=1 \
+    BUNDLE_PATH=/usr/local/bundle \
     BUNDLE_WITHOUT="development test"
 
-# ---------- Build stage ----------
+# =========================
+# Build stage
+# =========================
 FROM base AS build
 
-# Install packages needed to build gems
+# System deps for building native gems
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \
       build-essential git pkg-config libpq-dev libyaml-dev \
     && rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
-# Install application gems
+# Install gems with cache efficiency
 COPY Gemfile Gemfile.lock ./
-# 保険：Linuxプラットフォームをlockへ（既に入っていればnoop）
+# In case lockfile lacks linux platform (no-op if already present)
 RUN bundle lock --add-platform x86_64-linux || true
-
 RUN bundle install && \
-    rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git
+    rm -rf ~/.bundle "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git
 
-# Copy application code
+# App code
 COPY . .
 
-# Optional: bootsnapを事前コンパイル（失敗してもビルド継続）
+# Ensure binstubs/entrypoint are executable & LF line endings
+RUN chmod +x bin/* || true && sed -i 's/\r$//' bin/* || true
+
+# (Optional) bootsnap precompile; don't fail the build if it errors
 RUN bundle exec bootsnap precompile app/ lib/ || true
 
-# Precompile assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+# Precompile assets without master key (OK if credentials not needed at compile)
+RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
 
-# ---------- Final runtime image ----------
+# =========================
+# Final runtime image
+# =========================
 FROM base AS app
 
-# Runtime packages
-# ※ サーバ側圧縮で MiniMagick を使うため imagemagick を追加
+# Runtime deps (pg client & image processing)
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \
-      curl libjemalloc2 imagemagick libpq5 \
+      curl libjemalloc2 libpq5 imagemagick \
     && rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
-# Copy built artifacts: gems, application
+# Bring in gems and app
 COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /rails /rails
 
-# Run and own only the runtime files as a non-root user for security
+# Non-root user & ownership
 RUN useradd rails --create-home --shell /bin/bash && \
     chown -R rails:rails db log storage tmp
 USER rails:rails
 
-# Entrypoint prepares the database.
+# Rails container entrypoint (db prepare, etc.)
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
-# Start the server by default, this can be overwritten at runtime
+# Web
 EXPOSE 3000
-CMD ["./bin/rails", "server"]
+# Start app (Puma via config/puma.rb があればこちらでもOK)
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
