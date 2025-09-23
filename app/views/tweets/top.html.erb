@@ -6,12 +6,11 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 </head>
 
-
 <div class="top-wrapper">
-  <%= image_tag "IMG_2030.jpeg", class: "top-image" %>
+  <%= image_tag "IMG_2030.jpeg", class: "top-image"%>
   <div class="overlay-box">
     <div class="zemi logo">
-    <%= image_tag "oikawa_logo_transparent.png", class: "top-logo" %>
+      <%= image_tag "oikawa_logo_transparent.png", class: "top-logo" %>
     </div>
     <div class="overlay-text">
       <br><br>
@@ -21,6 +20,16 @@
     </div>
   </div>
 </div>
+
+
+
+<section class="theme">
+
+  <%= image_tag "風岡トップ.jpeg", class: "responsive-image" %>
+</section>
+
+
+
 
 
 
@@ -41,20 +50,19 @@
         <% if @letters.any? %>
           <% @letters.each do |letter| %>
           <%= link_to letter_path(letter), class: "letter-link" do %>
-        <div class="letter">
-        <p class="topletter-date">
-          <%= letter.day.strftime("%Y年%-m月%-d日") %>
-        </p>
-        <h3 class="letter-toptitle line-clamp-2" title="<%= letter.name %>">
-          <%= letter.name %>
-        </h3>
-      </div>
+          <div class="letter">
+            <p class="topletter-date">
+              <%= letter.day.strftime("%Y年%-m月%-d日") %>
+            </p>
+            <h3 class="letter-toptitle line-clamp-2" title="<%= letter.name %>">
+              <%= letter.name %>
+            </h3>
+          </div>
         <% end %>
       <% end %>
       <% else %>
       <p>まだ投稿がありません。</p>
       <% end %>
-
     </div>
   </div>
 
@@ -79,7 +87,6 @@
         <p><%= Date.parse(tweet.day).strftime("%Y年%-m月%-d日") %></p>
       </div>
     <% end %>
-  <% end %>
-</div>
+    <% end %>
+    </div>
 
-</div>
