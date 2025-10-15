@@ -349,6 +349,15 @@ footer {
   vertical-align: middle;
 }
 
+.line-icon {
+  width: 3rem;           /* アイコンの横幅 */
+  height: auto;          /* 縦横比を保つ */
+  margin: 1rem;
+  vertical-align: middle;
+  border-radius: 50%;    /* ← これで丸くなる！ */
+  overflow: hidden;      /* はみ出し防止（念のため） */
+}
+
 
 
 .tweets-container {
