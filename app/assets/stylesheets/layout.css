@@ -1,0 +1,143 @@
+
+.teacheroverlay-box {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* 半透明の黒塗り */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.teacheroverlay-text {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  line-height: 1.6;
+}
+
+.teacher-top{
+  position: relative;
+  width: 100%;
+  height: 360px; /* 画像と同じ高さに固定 */
+  overflow: hidden;
+}
+
+.letteroverlay-text {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  line-height: 1.6;
+}
+
+.studentoverlay-text {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  line-height: 1.6;
+}
+
+.activityoverlay-text {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  line-height: 1.6;
+}
+
+.outlineoverlay-text {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  line-height: 1.6;
+
+}
+
+.questionoverlay-text {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  line-height: 1.6;
+}
+
+.contactoverlay-text {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  line-height: 1.6;
+}
+
+.planoverlay-text {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  line-height: 1.6;
+}
+
+
+:root{
+  /* 好みで色や厚みを調整 */
+  --bar-color: #CDA209;        /* バーの地色（スクショのマスタード系） */
+  --bar-text:  #ffffff;        /* 文字色 */
+  --bar-pad-y: 0.9rem;         /* バーの上下余白 */
+  --bar-pad-x: 1.2rem;         /* バーの左右余白 */
+  --bar-line-gap: 6px;         /* バー端から白ラインまでの距離 */
+  --bar-line-thin: 2px;        /* 白ラインの太さ */
+  --bar-edge-hair: 1px;        /* 外側のヘアライン(淡い) */
+  --bar-max: 1100px;           /* 最大幅（お好みで）*/
+}
+
+.bar-title {
+  width: 100%;
+  max-width: 1100px;       /* 好みで最大幅を指定 */
+  margin: 0 auto 1.5rem;
+  background: #CDA209;     /* 帯の色 */
+  position: relative;
+  padding: 1rem 1.5rem;    /* 基本余白（上下1rem / 左右1.5rem） */
+  box-sizing: border-box;
+  border-top: 1px solid rgba(205,162,9,0.8);
+  border-bottom: 1px solid rgba(205,162,9,0.8);
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* 上下の白ライン */
+.bar-title::before,
+.bar-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+}
+.bar-title::before { top: 0; }
+.bar-title::after  { bottom: 0; }
+
+.bar-title__text {
+  color: #fff;
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  font-weight: 700;
+  margin: 0;
+}
+
+/* ===== レスポンシブ調整 ===== */
+/* タブレット以下のときは左右に少し空白を残す */
+/* タブレット以下で左右に均等余白を確保 */
+@media (max-width: 1024px) {
+  .bar-title{
+    width: auto;                 /* ← 100%をやめる */
+    margin: 1.5rem 0.5rem 1.5rem;       /* ← 左右1remずつ空ける */
+    border-radius: .4rem;
+  }
+}

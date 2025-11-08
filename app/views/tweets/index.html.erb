@@ -13,35 +13,51 @@
 
 
 
-<% if user_signed_in? %>
-  
-<% end %>
-<div class="tweets-container">
-  <% @tweets.reverse_each do |t| %>
-    <%= link_to tweet_path(t.id), class: "tweet-link" do %>
-      <div class="tweet-paperindex">
-        <div class="wood-thumbtack">
-           <div class="wood-head"></div>
-            <div class="wood-head-bottom"></div>
-              <div class="woodpin-needle"></div>
-        </div>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ブログ投稿</title>
+  <link rel="stylesheet" href="blog.css">  <!-- ← CSSファイルを読み込み -->
+</head>
 
-        <% if t.image.attached? %>
-          <%= image_tag t.image, size: '250x200' %>
-        <% end %>
+<div class="bar-title">
+  <h2 class="bar-title__text">2025年</h2>
+  </div>
 
-        <h3><%= t.name %></h3>
+<body>
 
-        <%# ✅ 日付を整形表示 %>
-        <p><%= t.day.present? ? Date.parse(t.day).strftime("%Y年%-m月%-d日") : "日付未設定" %></p>
+  <article class="blog-container">
+  <h1 class="blog-title">〇〇旅行記：道後温泉でのんびりした一日</h1>
+  <p class="blog-date">📅 2025年11月7日</p>
 
-        <% if user_signed_in? && current_user.id == t.user_id %>
-          <%= link_to "編集する", edit_tweet_path(t.id) %>
-          <%= button_to "削除する", tweet_path(t.id), method: :delete %>
-        <% end %>
-      </div>
-    <% end %>
-  <% end %>
-</div>
+  <div class="blog-photos">
+    <%= image_tag "風岡トップ.jpg", class: "responsive-image" %>
+    <%= image_tag "風岡トップ.jpg", class: "responsive-image" %>
+  </div>
 
+  <p class="blog-location">📍 愛媛県松山市 道後温泉本館</p>
+  <div class="blog-content">
+    松山観光の初日は道後温泉へ。歴史ある建物の雰囲気に包まれながら、
+    ゆったりとした時間を過ごしました。商店街では地元のスイーツや
+    柑橘ジュースを堪能し、夜はライトアップされた温泉街がとても幻想的でした。
+  </div>
+</article>
+
+
+  <article class="blog-container">
+    <h1 class="blog-title">〇〇旅行記：道後温泉でのんびりした一日</h1>
+    <p class="blog-date">📅 2025年11月7日</p>
+    <img src="images/dogo.jpg" alt="道後温泉の写真" class="blog-photo">
+    <p class="blog-location">📍 愛媛県松山市 道後温泉本館</p>
+    <div class="blog-content">
+      松山観光の初日は道後温泉へ。歴史ある建物の雰囲気に包まれながら、
+      ゆったりとした時間を過ごしました。商店街では地元のスイーツや
+      柑橘ジュースを堪能し、夜はライトアップされた温泉街がとても幻想的でした。
+    </div>
+  </article>
+
+</body>
+</html>
 

@@ -1,0 +1,374 @@
+.sticky-noteblue{
+  position: relative;
+  width: min(30rem, 92vw); /* 画面狭いときは縮む */
+  min-height: 30rem;
+  background-color: #b3e5f2;
+  margin: 2rem auto;       /* ← 横中央 */
+  display: block;          /* 念のため */
+  box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,.2);
+  border-radius: .2rem;
+  padding: 1rem;
+  margin-top: 3.5rem;
+}
+
+.tapeblue {
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12rem;
+  height: 4rem;
+  background-color: #66bad1; /* 上のテープ色 */
+  
+}
+
+.note-content {
+  padding: 2.5rem 1rem 1rem; /* 上部はテープ分だけ余白 */
+  position: relative;
+  font-family: "Zen Maru Gothic", sans-serif;
+}
+
+.note-content h1 {
+  font-size: 2.4rem;
+  text-align: center;
+}
+
+.note-content h2 {
+  font-size: 1.9rem;
+}
+
+.note-content p {
+  font-size: 1.3rem;
+}
+
+@media screen and (max-width: 600px) {
+  .sticky-noteblue {
+    width: 90vw;          /* スマホ画面に合わせる */
+    min-height: 90vw;     /* 高さも割合で調整（必要に応じて変更） */
+    padding: 1.5rem 1rem;
+  }
+
+  .tapeblue {
+    width: 8rem;          /* テープを少し小さくする */
+    height: 2.5rem;
+    top: -1.25rem;
+  }
+
+  .note-content {
+    font-size: 0.9rem;    /* フォント少し小さめ */
+    padding-top: 2rem;    /* テープとの距離調整 */
+  }
+
+  .note-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .note-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .note-content p {
+    font-size: 1.1rem;
+  }
+}
+
+.sticky-notegreen {
+  position: relative;
+  width: 30rem;
+  height: auto;
+  min-height: 30rem; /* ← 高さの下限を設定 */
+  background-color: #d5ef74; /* 黄緑 */
+  margin: 2rem auto;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+  border-radius: 0.2rem;
+  padding: 1rem;
+}
+
+.tapegreen {
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12rem;
+  height: 4rem;
+  background: #a9d64f;
+}
+
+@media screen and (max-width: 600px) {
+  .sticky-notegreen {
+    width: 90vw;          /* スマホ画面に合わせる */
+    min-height: 90vw;     /* 高さも割合で調整（必要に応じて変更） */
+    padding: 1.5rem 1rem;
+  }
+
+  .tapegreen {
+    width: 8rem;          /* テープを少し小さくする */
+    height: 2.5rem;
+    top: -1.25rem;
+  }
+
+  .note-content {
+    font-size: 0.9rem;    /* フォント少し小さめ */
+    padding-top: 2rem;    /* テープとの距離調整 */
+  }
+}
+
+
+
+.sticky-noteorange{
+  position: relative;
+  width: min(30rem, 92vw); /* 画面狭いときは縮む */
+  min-height: 30rem;
+  background-color: #ffd878;
+  margin: 2rem auto;       /* ← 横中央 */
+  display: block;          /* 念のため */
+  box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,.2);
+  border-radius: .2rem;
+  padding: 1rem;
+  margin-top: 3.5rem;
+}
+
+.tapeorange {
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12rem;
+  height: 4rem;
+  background: #f6a00a;
+}
+
+@media screen and (max-width: 600px) {
+  .sticky-noteorange {
+    width: 90vw;          /* スマホ画面に合わせる */
+    min-height: 90vw;     /* 高さも割合で調整（必要に応じて変更） */
+    padding: 1.5rem 1rem;
+  }
+
+  .tapeorange {
+    width: 8rem;          /* テープを少し小さくする */
+    height: 2.5rem;
+    top: -1.25rem;
+  }
+
+  .note-content {
+    font-size: 0.9rem;    /* フォント少し小さめ */
+    padding-top: 2rem;    /* テープとの距離調整 */
+  }
+}
+
+
+
+.teacher-about-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* ← ここを flex-start → center に変更！ */
+  flex-wrap: nowrap;
+}
+
+.teacher-fusen-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+
+/* スマホ・タブレット対応 */
+@media screen and (max-width: 1024px) {
+  .teacher-about-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .teacher-fusen-wrapper {
+    width: 90vw;
+  }
+}
+
+
+.activities__head {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.activities__eyebrow {
+  font-size: 0.8rem;
+  color: #666;
+  letter-spacing: 0.15em;
+}
+
+.activities__title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+
+/* ====== リスト ====== */
+.activities__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ====== 各活動カード ====== */
+.activity {
+  display: grid;
+  grid-template-columns: 280px 1fr; /* 写真左・説明右 */
+  gap: 1.5rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  min-height: 240px;  /* ★枠の高さを固定 */
+  box-sizing: border-box;
+}
+
+
+
+/* 枠サイズを固定して、どんな画像でも同じ見た目に */
+:root{
+  /* 好みで調整（デスクトップ / モバイル） */
+  --media-h-desktop: 200px;
+  --media-h-mobile:  220px;
+}
+
+.activity__media{
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 0.6rem;
+  overflow: hidden;
+
+  /* ★ ここで高さを固定 */
+  height: var(--media-h-desktop);
+}
+
+/* 画像は枠いっぱいに、中央トリミング */
+.activity__media img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  /* 角も丸く見せたいなら継承でもOK */
+  border-radius: inherit;
+}
+
+/* スマホ・タブレットのときの高さ（必要なら調整） */
+@media (max-width: 768px){
+  .activity{
+    grid-template-columns: 1fr;   /* 画像→本文の縦並び（既に入れているなら不要） */
+    min-height: auto;
+  }
+  .activity__media{
+    height: var(--media-h-mobile); /* ★ モバイル用固定高さ */
+  }
+}
+
+
+.activity__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.activity__heading {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.activity__text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+/* ====== スマホ対応 ====== */
+@media (max-width: 768px) {
+  .activity {
+    grid-template-columns: 1fr; /* スマホは縦並び */
+    min-height: auto;          /* 高さ制限解除 */
+  }
+  .activity__media {
+    margin-bottom: 1rem;
+  }
+}
+
+/* ====== 情報カード用の派生（授業頻度） ====== */
+.activity--info {
+  /* 既存の activity と同じ枠・レイアウトを踏襲 */
+  /* 固定感を少し強めるため高さを揃えたい場合はここで指定 */
+  min-height: 220px; /* 既存より少し低めでもOK。全カード統一なら揃えてください */
+}
+
+/* アイコンは少し小ぶりにして“情報感”を演出 */
+.activity--info .activity__media {
+  background: #f7f9ff;           /* うっすら色を変えて差別化（白系で一貫性） */
+  border: 1px solid #e3e8ff;
+}
+
+.activity--info .activity__media img {
+  width: 70%;     /* 通常カードより小さめ */
+  max-width: 140px;
+}
+
+/* 注意書き（※）のスタイル：本文より一段落とし、可読性を上げる */
+.activity__note {
+  margin-top: 0.6rem;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: #555;
+  padding-left: 0.9rem;
+  border-left: 3px solid #dcdcdc;  /* 目線誘導のガイド */
+}
+
+
+/* 授業頻度セクション（本文だけのシンプル版） */
+#frequency .activities__content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: left;
+}
+
+#frequency .activities__text {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+#frequency .activities__note {
+  margin-top: 0.8rem;
+  font-size: 0.95rem;
+  color: #555;
+  padding-left: 0.9rem;
+  border-left: 3px solid #dcdcdc;
+}
+
+
+/* ====== カリキュラム（枠付き） ====== */
+.curriculum__frame {
+  max-width: 1000px;          /* ページ中央に収める幅 */
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.curriculum__media {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 1rem;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.curriculum__img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0.5rem;
+}

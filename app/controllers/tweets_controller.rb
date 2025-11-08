@@ -69,6 +69,18 @@ end
 
   end
 
+  def student
+
+  end
+
+  def news
+
+  end
+
+  def schedule
+
+  end
+
   def mypage
 
   end

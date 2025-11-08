@@ -1,0 +1,98 @@
+:root {
+  --bg:#fafafa; --text:#222; --muted:#666;
+  --card:#fff; --line:#e6e6e6;
+  --brand:#1f6feb; --radius:14px;
+  --shadow:0 6px 18px rgba(0,0,0,.06);
+  --w:min(1000px,92vw);
+}
+
+/* ベース設定 */
+html,body {
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Noto Sans JP",system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+  line-height:1.65;
+  margin:0;
+}
+.wrap {
+  width:var(--w);
+  margin:48px auto;
+}
+
+/* 学年タイトル */
+.year-title {
+  font-size:1.4rem;
+  color:var(--brand);
+  border-left:6px solid var(--brand);
+  padding-left:.6rem;
+  margin:2rem 0 1rem;
+}
+
+/* セクション小見出し */
+.section-subtitle {
+  font-size:1.1rem;
+  font-weight:700;
+  margin:20px 0 10px;
+}
+
+/* 表デザイン */
+.table {
+  width:100%;
+  border-collapse:collapse;
+  background:var(--card);
+  box-shadow:var(--shadow);
+  border-radius:var(--radius);
+  overflow:hidden;
+}
+.table th,
+.table td {
+  padding:.85rem 1rem;
+  border-bottom:1px solid var(--line);
+  vertical-align:top;
+}
+.table thead th {
+  background:#f6f8fa;
+  text-align:left;
+  font-weight:700;
+}
+.table tr:last-child td {
+  border-bottom:none;
+}
+.mm {
+  white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+}
+.badge {
+  display:inline-block;
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:.15rem .55rem;
+  font-size:.85rem;
+  margin-right:.25rem;
+}
+
+/* カードデザイン */
+.grid {
+  display:grid;
+  gap:14px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+}
+.card {
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:1rem 1.1rem;
+  display:flex;
+  flex-direction:column;
+  gap:.4rem;
+}
+.card h4 {
+  margin:.1rem 0 .25rem;
+  font-size:1.05rem;
+}
+
+/* 印刷対応 */
+@media print {
+  body { background:#fff; }
+  .card { break-inside:avoid; }
+}

@@ -46,7 +46,7 @@
         <div class="activities dropdown">
         <a href="#" class="activities-link">Activities <span class="caret">▼</span></a>
         <div class="links">
-        <%= link_to 'Plans', controller: "plans", action: "index" %>
+        <%= link_to 'Plans', controller: "tweets", action: "schedule" %>
         <%= link_to 'Blogs', controller: "tweets", action: "index" %>
         </div>
         </div>
@@ -55,11 +55,10 @@
         <a href="#" class="members-link">Members <span class="caret">▼</span></a>
          <div class="links">
          <%= link_to 'Teacher', controller: "tweets", action: "teacher" %>
-          <%= link_to 'Students', controller: "students", action: "index" %>
+          <%= link_to 'Students', controller: "tweets", action: "student" %>
         </div>
         </div>
-        <%= link_to 'News', controller: "letters", action: "index" %>
-        <%= link_to 'Contact', controller: "contacts", action: "new" %>
+        <%= link_to 'News', controller: "tweets", action: "news" %>
 
       </nav>
     </header>
@@ -67,12 +66,11 @@
       <%= link_to 'トップページ', controller: "tweets", action: "top" %>
       <%= link_to 'ゼミ概要', controller: "tweets", action: "outline" %>
       <%= link_to 'Q&A', controller: "tweets", action: "question" %>
-      <%= link_to '活動予定', controller: "plans", action: "index" %>
+      <%= link_to '年間予定', controller: "tweets", action: "schedule" %>
       <%= link_to '活動ブログ', controller: "tweets", action: "index" %>
       <%= link_to '教員紹介', controller: "tweets", action: "teacher" %>
-      <%= link_to 'ゼミ生紹介', controller: "students", action: "index" %>
-      <%= link_to 'お知らせ', controller: "letters", action: "index" %>
-      <%= link_to 'お問い合わせ', controller: "contacts", action: "new" %>
+      <%= link_to 'ゼミ生紹介', controller: "tweets", action: "student" %>
+      <%= link_to 'お知らせ', controller: "tweets", action: "news" %>
     </nav>
 
     <main>
@@ -92,12 +90,11 @@
     <%= link_to 'トップページ', controller: "tweets", action: "top" %>
     <%= link_to 'ゼミ概要', controller: "tweets", action: "outline" %>
     <%= link_to 'Q&A', controller: "tweets", action: "question" %>
-    <%= link_to '活動予定', controller: "plans", action: "index" %>
+    <%= link_to '年間予定', controller: "tweets", action: "schedule" %>
     <%= link_to '活動ブログ', controller: "tweets", action: "index" %>
     <%= link_to '教員紹介', controller: "tweets", action: "teacher" %>
-    <%= link_to 'ゼミ生紹介', controller: "students", action: "index" %>
-    <%= link_to 'お知らせ', controller: "letters", action: "index" %>
-    <%= link_to 'お問い合わせ', controller: "contacts", action: "new" %>
+    <%= link_to 'ゼミ生紹介', controller: "tweets", action: "student" %>
+    <%= link_to 'お知らせ', controller: "tweets", action: "news" %>
     </nav>
   <p class="footer-copy">Copyright © Oikawa Seminar Rights Reserved.</p>
 </footer>

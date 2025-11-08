@@ -1,0 +1,84 @@
+.announcement-page {
+  font-family: "Noto Sans JP", sans-serif;
+  background-color: #fafafa;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+/* コンテナ */
+.announcement-page .announcement-container {
+  max-width: 800px;
+  width: 100%;
+}
+
+/* 見出し（任意） */
+.announcement-page .page-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #222;
+}
+
+/* 各お知らせ */
+.announcement-page .announcement-card {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+/* 最後のお知らせは線なし */
+.announcement-page .announcement-card:last-of-type {
+  border-bottom: none;
+}
+
+/* 日付 */
+.announcement-page .announcement-date {
+  color: #777;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+
+/* タイトル */
+.announcement-page .announcement-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0.2rem 0 0.8rem 0;
+  color: #222;
+}
+
+/* 内容 */
+.announcement-page .announcement-content {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 0.8rem;
+}
+
+/* リンク */
+.announcement-page .announcement-link {
+  color: #007acc;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.announcement-page .announcement-link:hover {
+  text-decoration: underline;
+}
+
+/* スマホ対応 */
+@media (max-width: 600px) {
+  .announcement-page {
+    padding: 1.5rem 1rem;
+  }
+
+  .announcement-page .announcement-title {
+    font-size: 1.1rem;
+  }
+
+  .announcement-page .announcement-content {
+    font-size: 0.95rem;
+  }
+}
+

@@ -1,0 +1,118 @@
+.about-list {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.about-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.2rem;
+}
+
+.about-item dt {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #222;
+  margin-bottom: 0.3rem;
+  border-left: 4px solid #dcdcdc;
+  padding-left: 0.6rem;
+}
+
+.about-item dd {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #333;
+  margin: 0;
+}
+
+/* PCでは横並びにしてもOK */
+@media (min-width: 768px) {
+  .about-item {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .about-item dt {
+    min-width: 7rem;
+    margin-bottom: 0;
+    font-size: 1.5rem;
+  }
+  .about-item dd {
+    margin-left: 1rem;
+    font-size: 1.5rem;
+  }
+}
+
+/* ===== メッセージ（吹き出しカード） ===== */
+.message-section{
+  padding: 0 0 1.5rem;
+}
+
+/* 本体：中央寄せ・枠入り・読みやすい行間 */
+.message-bubble{
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: clamp(1rem, 2.8vw, 1.5rem) clamp(1rem, 3vw, 1.75rem);
+  background: #fff;
+  border: 1px solid #e4e4e4;
+  border-radius: 1rem;
+  box-shadow: 0 4px 14px rgba(0,0,0,.08);
+  line-height: 1.9;
+  color: #333;
+  box-sizing: border-box;
+}
+
+/* 薄い引用マークの飾り（雰囲気だけ／不要なら削除OK） */
+.message-bubble::before{
+  content: "“";
+  position: absolute;
+  top: .2rem;
+  left: .8rem;
+  font-size: 3rem;
+  line-height: 1;
+  color: rgba(205,162,9,.18); /* #CDA209系を極薄に */
+  font-family: Georgia, "Times New Roman", serif;
+  pointer-events: none;
+}
+
+/* 吹き出しの“しっぽ” */
+.message-bubble::after{
+  content: "";
+  position: absolute;
+  bottom: -14px;          /* 本体の外に少し出す */
+  left: 2.5rem;           /* しっぽの位置（左寄り） */
+  width: 26px;
+  height: 26px;
+  background:
+    linear-gradient(135deg, transparent 50%, #fff 0) no-repeat; /* 三角の白面 */
+  transform: rotate(45deg);
+  border-right: 1px solid #e4e4e4;
+  border-bottom: 1px solid #e4e4e4;
+  box-shadow: 4px 4px 10px rgba(0,0,0,.05);
+}
+
+/* 段落の余白調整（最初のpだけ入る想定） */
+.message-bubble p{
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+/* タブレット/スマホ：左右に少し余白を作る（過去のbar-titleと同じ思想） */
+@media (max-width: 1024px){
+  .message-bubble{
+    width: auto;                /* 親幅100%をやめて余白を効かせる */
+    margin: 0 1rem;             /* 左右1remの余白 */
+  }
+  .message-bubble p{
+  margin: 0;
+  font-size: 1rem;
+}
+}
+
+.teacher-image{
+  width: 30vw;
+  height: auto;
+  display: block;
+}
+

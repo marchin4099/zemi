@@ -1,0 +1,115 @@
+:root {
+  --card-bg: #fff;
+  --text: #333;
+  --muted: #666;
+  --shadow: 0 2px 8px rgba(0,0,0,0.1);
+  --accent: #0a66c2;
+  --blockquote-bg: #f7f7f7;
+  --radius: 12px;
+}
+
+/* --- 全体構成 --- */
+.generations {
+  box-sizing: border-box;
+  max-width: 700px; /* ブログと統一 */
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: "Noto Sans JP", sans-serif;
+  color: var(--text);
+}
+
+
+.generations-heading {
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+/* カード本体 */
+.generation-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: clamp(1rem, 2.5vw, 1.5rem) clamp(1rem, 3vw, 2rem);
+  margin: 1.25rem 0;
+}
+
+.generation-title {
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.generation-members {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.generation-content {
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+/* 写真セクション */
+.generation-photo {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.generation-photo img {
+  width: 100%;
+  max-width: 640px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  object-fit: cover;
+}
+
+.photo-caption {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.4rem;
+}
+
+/* コメント部分 */
+.comment-label {
+  margin-bottom: 0.25rem;
+}
+
+.generation-comment blockquote {
+  background: var(--blockquote-bg);
+  border-left: 5px solid var(--accent);
+  padding: 0.85rem 1rem;
+  margin: 0.25rem 0 0;
+  border-radius: 6px;
+  font-style: italic;
+}
+
+.generation-comment blockquote footer {
+  margin-top: 0.4rem;
+  font-style: normal;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* スマホ対応 */
+@media (max-width: 480px) {
+  .generation-card {
+    padding: 0.9rem 1rem;
+  }
+  .generation-members {
+    font-size: 0.9rem;
+  }
+  .generation-photo img {
+    border-radius: 8px;
+  }
+  .photo-caption {
+    font-size: 0.8rem;
+  }
+  .generation-comment blockquote {
+    padding: 0.75rem 0.85rem;
+  }
+}
